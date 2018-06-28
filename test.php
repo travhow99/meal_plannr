@@ -14,7 +14,7 @@ $username = 'root';
 $password = 'root';
 
 // Create database connection using PHP Data Object (PDO)
-$db = new PDO("mysql:host=localhost;dbname=test", $username, $password);
+$db = new PDO("mysql:host=localhost;dbname=meal_plannr", $username, $password);
 
 // Identify name of table within database
 $table = 'users';
