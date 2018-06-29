@@ -1,27 +1,34 @@
 <?php
-$connection = new mysqli("localhost", "root", "root", "meal_plannr");
+$host = "localhost";
+$userName = "root";
+$password = "root";
+$dbName = "meal_plannr";
 
-if (mysqli_connect_error()) {
-  die('Connect Error ('.mysqli_connect_errno().') '.mysqli_connect_error());
+// Create database connection
+$conn = new mysqli($host, $userName, $password, $dbName);
+
+// Check connection
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
 }
 
 echo 'Connected successfully.';
-
+/*
 echo $_POST['meal_name'];
 
-      mysqli_query($connection,"SELECT * FROM meals");
+      mysqli_query($conn,"SELECT * FROM meals");
 
       $meal_name = $_POST['meal_name'];
       $url = $_POST['url'];
 
       //Insert Query of SQL
-      mysqli_query($connection, "INSERT INTO meals(meal_name, url) VALUES ('$meal_name', '$url')");
+      mysqli_query($conn, "INSERT INTO meals(meal_name, url) VALUES ('$meal_name', '$url')");
 
 
 
 
 
-$mysqli_close($connection);
-
+$mysqli_close($conn);
+*/
 
 ?>

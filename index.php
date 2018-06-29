@@ -13,6 +13,23 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+  <style>
+
+    #loading-img{
+      display:none;
+    }
+
+    .response_msg{
+      margin-top:10px;
+      font-size:13px;
+      background:#E5D669;
+      color:#ffffff;
+      width:250px;
+      padding:3px;
+      display:none;
+    }
+
+    </style>
 
 </head>
 <body>
@@ -32,8 +49,51 @@
     </form>
   </div>
 
+  <div class="response_msg"></div>
+ </div>
+ </div>
+ </div>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+ <script>
+     $(document).ready(function(){
+     $("#contact-form").on("submit",function(e){
+       e.preventDefault();
+       if($("#contact-form [name='meal_name']").val() === '')
+         {
+           $("#contact-form [name='meal_name']").css("border","1px solid red");
+         }
+       else if ($("#contact-form [name='your_email']").val() === '')
+         {
+           $("#contact-form [name='your_email']").css("border","1px solid red");
+         }
+       else
+       {
+         $("#loading-img").css("display","block");
+         var sendData = $( this ).serialize();
+         $.ajax({
+           type: "POST",
+           url: "get_response.php",
+           data: sendData,
+           success: function(data){
+             $("#loading-img").css("display","none");
+             $(".response_msg").text(data);
+             $(".response_msg").slideDown().fadeOut(3000);
+             $("#contact-form").find("input[type=text], input[type=email], textarea").val("");
+           }
 
-  <script type="text/javascript" src="inc/jquery/jquery-1.11.2.min.js">
-    <script type="text/javascript" src="inc/jquery/functions.js">
+         });
+       }
+     });
+
+     $("#contact-form input").blur(function(){
+     var checkValue = $(this).val();
+     if(checkValue != '')
+     {
+     $(this).css("border","1px solid #eeeeee");
+     }
+     });
+     });
+ </script>
+
 </body>
 </html>
