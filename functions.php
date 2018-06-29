@@ -5,16 +5,19 @@ $password = "root";
 $dbName = "meal_plannr";
 
 // Create database connection
-$conn = new mysqli($host, $userName, $password, $dbName);
+$conn = mysqli_connect($host, $userName, $password, $dbName);
 
 // Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
+if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+} else {
+  echo 'Connected successfully.';
 }
 
-echo 'Connected successfully.';
-/*
-echo $_POST['meal_name'];
+
+echo '<br>'.$_POST['meal_name'];
+echo '<br>'.$_POST['url'];
 
       mysqli_query($conn,"SELECT * FROM meals");
 
@@ -22,13 +25,13 @@ echo $_POST['meal_name'];
       $url = $_POST['url'];
 
       //Insert Query of SQL
-      mysqli_query($conn, "INSERT INTO meals(meal_name, url) VALUES ('$meal_name', '$url')");
+      mysqli_query($conn, "INSERT INTO meals(meal_name, meal_url) VALUES ('$meal_name', '$url')");
 
 
 
 
 
-$mysqli_close($conn);
-*/
+mysqli_close($conn);
+
 
 ?>
