@@ -52,6 +52,7 @@
 
   <div class="container">
     <h3>Find a New Recipe</h3>
+    <input id="foodInput" type='text' placeholder="Main Ingredient"></input>
     <button id="submitRecipe">Find Recipe</button>
 
 
@@ -59,9 +60,6 @@
 
 
   <div class="response_msg">
-    <div class='showHumidity'></div>
-    <div class='showTemp'></div>
-    <div id="errors"></div>
   </div>
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
@@ -72,80 +70,23 @@
 
 
     $('#submitRecipe').click(function() {
-      console.log('getting data');
+      let food = $('#foodInput').val();
+      food = food.replace(" ", "%20");
       //let city = $('#location').val();
       //$('#location').val("");
-      $.ajax({url: "https://food2fork.com/api/search?key=69ada04a6ea560cac9738b2e25124938&q=chicken%20breast&page=2&sort=q", success: function(result){
+      $.ajax({url: "https://food2fork.com/api/search?key=" + key + "&q=" + food + "&page=2&sort=q", success: function(result){
           $(".response_msg").text(result);
+
+          //clear fields
+          $('#foodInput').val('');
+
       }});
     });
 
   });
-/*
-      $.ajax({
-        url: 'http://food2fork.com/api/search?key=69ada04a6ea560cac9738b2e25124938&q=chicken%20breast&page=2&sort=q',
-        type: 'GET',
-        key: key,
-        data: {
-          format: 'json'
-        },
-        success: function(response) {
-          $('.showHumidity').text(`The humidity in `);
-          $('.showTemp').text(`The temperature in Kelvins is .`);
-        },
-        error: function() {
-          $('#errors').text("There was an error processing your request. Please try again.")
-        }
-      });
-    });
-  });
-*/
 
  </script>
 
-
-
-<!--
-<script>
-     $(document).ready(function(){
-       $("#contact-form").on("submit",function(e){
-         e.preventDefault();
-         if($("#contact-form [name='meal_name']").val() === '')
-           {
-             $("#contact-form [name='meal_name']").css("border","1px solid red");
-           }
-         else if ($("#contact-form [name='your_email']").val() === '')
-           {
-             $("#contact-form [name='your_email']").css("border","1px solid red");
-           }
-         else
-         {
-           $("#loading-img").css("display","block");
-           var sendData = $( this ).serialize();
-           $.ajax({
-             type: "POST",
-             url: "get_response.php",
-             data: sendData,
-             success: function(data){
-               $("#loading-img").css("display","none");
-               $(".response_msg").text(data);
-               $(".response_msg").slideDown().fadeOut(3000);
-               $("#contact-form").find("input[type=text], input[type=email], textarea").val("");
-             }
-           });
-         }
-       });
-
-       $("#contact-form input").blur(function(){
-       var checkValue = $(this).val();
-       if(checkValue != '')
-         {
-           $(this).css("border","1px solid #eeeeee");
-         }
-       });
-     });
- </script>
- !-->
 
 </body>
 </html>
