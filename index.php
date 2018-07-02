@@ -27,13 +27,6 @@
     }
 
     .response_msg{
-      margin-top:10px;
-      font-size:13px;
-      background:#E5D669;
-      color:#ffffff;
-      width:250px;
-      padding:3px;
-      display:none;
     }
 
     </style>
@@ -56,8 +49,62 @@
     </form>
   </div>
 
-  <div class="response_msg"></div>
+
+  <div class="container">
+    <h3>Find a New Recipe</h3>
+    <button id="submitRecipe">Find Recipe</button>
+
+
+  </div>
+
+
+  <div class="response_msg">
+    <div class='showHumidity'></div>
+    <div class='showTemp'></div>
+    <div id="errors"></div>
+  </div>
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+ <script>
+   $(document).ready(function() {
+
+     let key = "69ada04a6ea560cac9738b2e25124938";
+
+
+    $('#submitRecipe').click(function() {
+      console.log('getting data');
+      //let city = $('#location').val();
+      //$('#location').val("");
+      $.ajax({url: "https://food2fork.com/api/search?key=69ada04a6ea560cac9738b2e25124938&q=chicken%20breast&page=2&sort=q", success: function(result){
+          $(".response_msg").text(result);
+      }});
+    });
+
+  });
+/*
+      $.ajax({
+        url: 'http://food2fork.com/api/search?key=69ada04a6ea560cac9738b2e25124938&q=chicken%20breast&page=2&sort=q',
+        type: 'GET',
+        key: key,
+        data: {
+          format: 'json'
+        },
+        success: function(response) {
+          $('.showHumidity').text(`The humidity in `);
+          $('.showTemp').text(`The temperature in Kelvins is .`);
+        },
+        error: function() {
+          $('#errors').text("There was an error processing your request. Please try again.")
+        }
+      });
+    });
+  });
+*/
+
+ </script>
+
+
+
 <!--
 <script>
      $(document).ready(function(){

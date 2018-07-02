@@ -27,6 +27,7 @@ echo '<br>'.$_POST['url'];
       //Insert Query of SQL
       mysqli_query($conn, "INSERT INTO meals(meal_name, meal_url) VALUES ('$meal_name', '$url')");
 
+      echo "Affected rows: " . mysqli_affected_rows($conn);
 
 
 
