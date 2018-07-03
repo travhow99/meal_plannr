@@ -53,7 +53,7 @@
   <div class="container">
     <h3>Find a New Recipe</h3>
     <input id="foodInput" type='text' placeholder="Main Ingredient"></input>
-    <button id="submitRecipe">Find Recipe</button>
+    <button id="submitRecipe" class="btn btn-primary">Find Recipe</button>
 
 
   </div>
@@ -63,29 +63,8 @@
   </div>
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
- <script>
-   $(document).ready(function() {
+ <script src="app.js"></script>
 
-     let key = "69ada04a6ea560cac9738b2e25124938";
-
-
-    $('#submitRecipe').click(function() {
-      let food = $('#foodInput').val();
-      food = food.replace(" ", "%20");
-      //let city = $('#location').val();
-      //$('#location').val("");
-      $.ajax({url: "https://food2fork.com/api/search?key=" + key + "&q=" + food + "&page=2&sort=q", success: function(result){
-          $(".response_msg").text(result);
-
-          //clear fields
-          $('#foodInput').val('');
-
-      }});
-    });
-
-  });
-
- </script>
 
 
 </body>
