@@ -1,5 +1,4 @@
 
-console.log('javascript bitches');
 
  let API_key = "69ada04a6ea560cac9738b2e25124938";
  let result;
@@ -32,15 +31,20 @@ console.log('javascript bitches');
 
               */
 
-      // Create Link
-     let foodURL = "<a href='" + recipe.recipes[1].f2f_url + "' target='_blank'>Click Here</a>";
+          // Loop through data and format
+          for (let x = 0; x < recipe.recipes.length; x++){
 
-     let foodPic = "<img src='" + recipe.recipes[1].image_url + "' class='img-responsive' />";
+              // Create Link
+             let foodURL = "<a href='" + recipe.recipes[x].f2f_url + "' target='_blank'>Get Recipe</a>";
 
-     let title = recipe.recipes[1].title;
-     console.log(foodURL, foodPic, title);
+             let foodPic = "<img src='" + recipe.recipes[x].image_url + "' class='img-responsive' />";
 
-     $('.response_msg').append('<div class="container"><h3>' + title + '</h3>' + foodPic + '<br>' + foodURL + '</div>');
+             let title = recipe.recipes[x].title;
+             //console.log(foodURL, foodPic, title);
+
+             $('.response_msg').append('<div class="col-sm-3"><h3>' + title + '</h3>' + foodPic + '<br>' + foodURL + '</div>');
+
+           }
 
        //clear fields
        $('#foodInput').val('');
