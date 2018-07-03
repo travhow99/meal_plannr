@@ -45,7 +45,9 @@
         <label for="url">URL:</label>
         <input type="text" name="url" class="form-control" id="url">
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+      <!-- PREVENT CLICK DURING TESTING
+      <button type="submit" class="btn btn-default disabled">Submit</button>
+      !-->
     </form>
   </div>
 

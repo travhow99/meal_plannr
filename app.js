@@ -10,7 +10,10 @@
    food = food.replace(" ", "%20");
    //let city = $('#location').val();
    //$('#location').val("");
-   $.ajax({url: "https://food2fork.com/api/search?key=" + API_key + "&q=" + food + "&page=2&sort=q", success: function(result){
+   $.ajax({url: "https://food2fork.com/api/search?key=" + API_key + "&q=" + food + "&count=4&sort=r", success: function(result){
+     // Clear div upon new search
+     $('.response_msg').empty();
+
     recipe = jQuery.parseJSON(result);
      console.log(recipe);
        //console.log("got the data,", result);
@@ -31,11 +34,12 @@
 
               */
 
+        console.log('div cleared');
           // Loop through data and format
           for (let x = 0; x < recipe.recipes.length; x++){
 
               // Create Link
-             let foodURL = "<a href='" + recipe.recipes[x].f2f_url + "' target='_blank'>Get Recipe</a>";
+             let foodURL = "<a href='" + recipe.recipes[x].source_url + "' target='_blank'>Get Recipe</a>";
 
              let foodPic = "<img src='" + recipe.recipes[x].image_url + "' class='img-responsive' />";
 
@@ -51,3 +55,15 @@
 
    }});
  });
+
+ // Function to add recipe to database
+ function addRecipe(){
+
+ }
+
+ $("input").keypress(function(e) {
+	if (e.which == 13) {
+		console.log('enter');
+		$(this).next().click();
+	}
+})
