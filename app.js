@@ -5,7 +5,7 @@
 
  let recipe;
 
- $('#submitRecipe').click(function() {
+ $('#searchRecipe').click(function() {
    let food = $('#foodInput').val();
    food = food.replace(" ", "%20");
    //let city = $('#location').val();
@@ -46,7 +46,7 @@
              let title = recipe.recipes[x].title;
              //console.log(foodURL, foodPic, title);
 
-             $('.response_msg').append('<div class="col-sm-3"><h3>' + title + '</h3>' + foodPic + '<br>' + foodURL + '</div>');
+             $('.response_msg').append('<div class="col-sm-3"><h4>' + title + '</h4>' + foodPic + '<br>' + foodURL + '<a class="btn btn-info addRecipe"><i class="fas fa-utensils"></i></a></div>');
 
            }
 

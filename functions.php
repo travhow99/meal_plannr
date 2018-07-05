@@ -17,12 +17,12 @@ if (mysqli_connect_errno())
 
 
 echo '<br>'.$_POST['meal_name'];
-echo '<br>'.$_POST['url'];
+echo '<br>'.$_POST['meal_url'];
 
       mysqli_query($conn,"SELECT * FROM meals");
 
       $meal_name = $_POST['meal_name'];
-      $url = $_POST['url'];
+      $url = $_POST['meal_url'];
 
       //Insert Query of SQL
       mysqli_query($conn, "INSERT INTO meals(meal_name, meal_url) VALUES ('$meal_name', '$url')");

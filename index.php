@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Register / Login</title>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
   <!-- Latest compiled and minified CSS -->
@@ -19,6 +19,9 @@
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Font Awesome !-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
   <style>
 
@@ -43,11 +46,11 @@
       </div>
       <div class="form-group">
         <label for="url">URL:</label>
-        <input type="text" name="url" class="form-control" id="url">
+        <input type="text" name="meal_url" class="form-control" id="url">
       </div>
-      <!-- PREVENT CLICK DURING TESTING
-      <button type="submit" class="btn btn-default disabled">Submit</button>
-      !-->
+      <!-- PREVENT CLICK DURING TESTING!-->
+      <button type="submit" class="btn btn-default ">Submit</button>
+      <!--!-->
     </form>
   </div>
 
@@ -55,7 +58,7 @@
   <div class="container">
     <h3>Find a New Recipe</h3>
     <input id="foodInput" type='text' placeholder="Main Ingredient"></input>
-    <button id="submitRecipe" class="btn btn-primary">Find Recipe</button>
+    <button id="searchRecipe" class="btn btn-primary">Find Recipe</button>
 
 
   </div>
@@ -63,11 +66,11 @@
 
   <div class="response_msg">
   </div>
+
+
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
  <script src="app.js"></script>
-
-
 
 </body>
 </html>
