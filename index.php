@@ -55,7 +55,7 @@
   </div>
 
 
-  <div class="container">
+  <div class="container recipeSearch">
     <h3>Find a New Recipe</h3>
     <input id="foodInput" type='text' placeholder="Main Ingredient"></input>
     <button id="searchRecipe" class="btn btn-primary">Find Recipe</button>
@@ -64,7 +64,7 @@
   </div>
 
 
-  <div class="response_msg">
+  <div class="recipe-results">
   </div>
 
 

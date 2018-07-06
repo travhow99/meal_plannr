@@ -12,7 +12,7 @@
    //$('#location').val("");
    $.ajax({url: "https://food2fork.com/api/search?key=" + API_key + "&q=" + food + "&count=4&sort=r", success: function(result){
      // Clear div upon new search
-     $('.response_msg').empty();
+     $('.recipe-results').empty();
 
     recipe = jQuery.parseJSON(result);
      console.log(recipe);
@@ -34,7 +34,6 @@
 
               */
 
-        console.log('div cleared');
           // Loop through data and format
           for (let x = 0; x < recipe.recipes.length; x++){
 
@@ -46,24 +45,48 @@
              let title = recipe.recipes[x].title;
              //console.log(foodURL, foodPic, title);
 
-             $('.response_msg').append('<div class="col-sm-3"><h4>' + title + '</h4>' + foodPic + '<br>' + foodURL + '<a class="btn btn-info addRecipe"><i class="fas fa-utensils"></i></a></div>');
+             $('.recipe-results').append('<div class="col-sm-3 recipe-container"><h4>' + title + '</h4>' + foodPic + '<br>' + foodURL + '<a class="btn btn-info addRecipe"><i class="fas fa-utensils"></i></a></div>');
 
            }
 
        //clear fields
        $('#foodInput').val('');
 
+       // Function to add recipe to database
+       $('.addRecipe').click(function(){
+             let meal_name = $(this).siblings('h4').text();
+             let meal_url = $(this).siblings('a').attr('href');
+
+             $.post("functions.php",
+             {
+                 meal_name: meal_name,
+                 meal_url: meal_url
+             },
+             function(data, status){
+                 $('.recipeSearch').append("Data: " + data + "\nStatus: " + status);
+             });
+           });
+
+
    }});
  });
 
  // Function to add recipe to database
- function addRecipe(){
+ $('.addRecipe').click(function(){
+       console.log('test');
+       /*$.post("functions.php",
+       {
+           meal_name: "",
+           meal_url: ""
+       },
+       function(data, status){
+           alert("Data: " + data + "\nStatus: " + status);
+       });*/
+     });
 
- }
-
- $("input").keypress(function(e) {
-	if (e.which == 13) {
-		console.log('enter');
-		$(this).next().click();
-	}
-})
+   $("input").keypress(function(e) {
+  	if (e.which == 13) {
+  		console.log('enter');
+  		$(this).next().click();
+    }
+  });
