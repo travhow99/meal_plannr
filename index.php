@@ -23,16 +23,7 @@
   <!-- Font Awesome !-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
-  <style>
-
-    #loading-img{
-      display:none;
-    }
-
-    .response_msg{
-    }
-
-    </style>
+  <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
@@ -63,8 +54,9 @@
 
   </div>
 
-
-  <div class="recipe-results">
+  <div class="container">
+    <div class="row recipe-results">
+    </div>
   </div>
 
 

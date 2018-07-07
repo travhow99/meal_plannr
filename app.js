@@ -7,7 +7,7 @@
 
  $('#searchRecipe').click(function() {
    let food = $('#foodInput').val();
-   food = food.replace(" ", "%20");
+   //food = food.replace(" ", "%20");
    //let city = $('#location').val();
    //$('#location').val("");
    $.ajax({url: "https://food2fork.com/api/search?key=" + API_key + "&q=" + food + "&count=4&sort=r", success: function(result){
@@ -17,7 +17,7 @@
     recipe = jQuery.parseJSON(result);
      console.log(recipe);
        //console.log("got the data,", result);
-
+       $('.recipe-results').append('<h2>Recipe Results for ' + food);
 
        // Sample JSON Response
 
@@ -34,19 +34,18 @@
 
               */
 
+
           // Loop through data and format
           for (let x = 0; x < recipe.recipes.length; x++){
-
               // Create Link
-             let foodURL = "<a href='" + recipe.recipes[x].source_url + "' target='_blank'>Get Recipe</a>";
+             let foodURL = "<a class='btn btn-default' href='" + recipe.recipes[x].source_url + "' target='_blank'><i class='fas fa-utensils'></i> Get Recipe</a>";
 
              let foodPic = "<img src='" + recipe.recipes[x].image_url + "' class='img-responsive' />";
 
              let title = recipe.recipes[x].title;
              //console.log(foodURL, foodPic, title);
 
-             $('.recipe-results').append('<div class="col-sm-3 recipe-container"><h4>' + title + '</h4>' + foodPic + '<br>' + foodURL + '<a class="btn btn-info addRecipe"><i class="fas fa-utensils"></i></a></div>');
-
+             $('.recipe-results').append('<div class="col-sm-3"><div class="recipe-container"><h4>' + title + '</h4>' + foodPic + '<br>' + foodURL + ' <a class="btn btn-info addRecipe"><i class="fas fa-heart"></i> Add to Favorites</a></div></div>');
            }
 
        //clear fields
@@ -56,14 +55,16 @@
        $('.addRecipe').click(function(){
              let meal_name = $(this).siblings('h4').text();
              let meal_url = $(this).siblings('a').attr('href');
+             let parent = $(this).parent();
 
              $.post("functions.php",
              {
                  meal_name: meal_name,
                  meal_url: meal_url
              },
-             function(data, status){
-                 $('.recipeSearch').append("Data: " + data + "\nStatus: " + status);
+             function(){
+               $(parent).after('<p class="confirmation">' + meal_name + ' successfully added!</p>');
+                 //$(this).append(data + "added!");
              });
            });
 
@@ -72,6 +73,7 @@
  });
 
  // Function to add recipe to database
+ /*
  $('.addRecipe').click(function(){
        console.log('test');
        /*$.post("functions.php",
@@ -81,8 +83,9 @@
        },
        function(data, status){
            alert("Data: " + data + "\nStatus: " + status);
-       });*/
+       });
      });
+     */
 
    $("input").keypress(function(e) {
   	if (e.which == 13) {

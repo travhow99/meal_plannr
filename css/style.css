@@ -1,0 +1,12 @@
+.recipe-container {
+    background: pink;
+    padding: 10px;
+    border: 2px solid #b57a84;
+    border-radius: 20px;
+}
+
+.confirmation {
+    color: #32e432;
+    font-size: 16px;
+    font-family: monospace;
+}
