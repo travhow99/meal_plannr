@@ -10,3 +10,11 @@
     font-size: 16px;
     font-family: monospace;
 }
+
+#pageBack {
+  float: left;
+}
+
+#pageForward {
+  float: right;
+}
