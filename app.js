@@ -7,8 +7,11 @@
 
  $('#searchRecipe').click(function() {
    let food = $('#foodInput').val();
+   $('nav').remove();
 
    let page = 0;
+
+   let pagination = '<nav aria-label="Page navigation example"><ul class="pagination"><li class="page-item"><a id="pageBack" class="btn page-link">Previous</a></li><li class="page-item"><a class="btn page-number">1</a></li><li class="page-item"><a class="btn page-number" >2</a></li><li class="page-item"><a class="btn page-number">3</a></li><li class="page-item"><a class="btn page-number">4</a></li><li class="page-item"><a class="btn page-number">5</a></li><li class="page-item"><a class="btn page-number">6</a></li><li class="page-item"><a id="pageForward" class="btn page-link">Next</a></li></ul></nav>';
 
 
    // This proved to be unecessary
@@ -45,14 +48,14 @@
             let groupNumber = Math.floor(x / 4);
 
               // Create Link
-             let foodURL = "<a class='btn btn-default' href='" + recipe.recipes[x].source_url + "' target='_blank'><i class='fas fa-utensils'></i></a>";
+             let foodURL = "<a class='btn btn-default btn-block' href='" + recipe.recipes[x].source_url + "' target='_blank'><i class='fas fa-utensils'></i></a>";
 
              let foodPic = "<img src='" + recipe.recipes[x].image_url + "' class='img-responsive' />";
 
              let title = recipe.recipes[x].title;
              //console.log(foodURL, foodPic, title);
 
-             $('.recipe-results').append('<div class="col-sm-3 group' + groupNumber + '"><div class="recipe-container"><h4>' + title + '</h4>' + foodPic + '<br>' + foodURL + ' <a class="btn btn-info addRecipe"><i class="fas fa-heart"></i></a></div></div>');
+             $('.recipe-results').append('<div class="col-sm-3 group' + groupNumber + '"><div class="recipe-container"><h4>' + title + '</h4>' + foodPic + '<br>' + foodURL + ' <a class="btn btn-info btn-block addRecipe"><i class="fas fa-heart"></i></a></div></div>');
            }
 
            changePage();
@@ -79,32 +82,52 @@
 
 
    }});
-   $('.recipe-results').parent().append('<button id="pageBack" class="round">&#8249;</button><button id="pageForward" class="round">&#8250;</button>');
+   $('.recipe-results').parent().append(pagination);
+
+   // Change page to pagination #
+   $('.page-number').click(function(){
+     page = parseInt($(this).text()) - 1;
+     console.log(page);
+     changePage();
+   });
 
 
    $('#pageBack').click(function() {
      console.log('back');
      if (page !== 0) {
        page -= 1;
-       console.log(page);
      }
      changePage();
    });
 
    $('#pageForward').click(function() {
      console.log('forward');
-     page += 1;
-     console.log(page);
+     if (page !== 5){
+       page += 1;
+     }
      changePage();
    });
 
    // Function to show proper row
    function changePage() {
-     console.log('hiding');
+     console.log(page);
+     if (page !== 0 && page !== 5){
+       $('#pageBack').removeClass('disabled');
+       $('#pageForward').removeClass('disabled');
+       console.log('disabled classes removed');
+     } else if (page === 5){
+       $('#pageBack').removeClass('disabled');
+       $('#pageForward').addClass('disabled');
+       console.log('disable forward button');
+     } else if (page === 0){
+       $('#pageForward').removeClass('disabled');
+       $('#pageBack').addClass('disabled');
+       console.log('disable back button');
+     }
+
      for (let x = 0; x <= 5; x++) {
        if (page !== x){
          let group = '.group' + x;
-         console.log(group);
          $(group).hide();
        } else {
          let group = '.group' + x;
