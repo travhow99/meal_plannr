@@ -4,8 +4,8 @@
 
 <tr>
 
-<td>Name</td>
-<td>Age</td>
+<td>Meal</td>
+<td>Url</td>
 </tr>
 <?php
 
@@ -17,7 +17,7 @@ $password = 'root';
 $db = new PDO("mysql:host=localhost;dbname=meal_plannr", $username, $password);
 
 // Identify name of table within database
-$table = 'users';
+$table = 'meals';
 
 // Create the query - here we grab everything from the table
 $stmt = $db->query('SELECT * from '.$table);
@@ -26,7 +26,7 @@ $stmt = $db->query('SELECT * from '.$table);
 $db = NULL;
 
 while($rows = $stmt->fetch()){
-echo "<tr><td>". $rows['username'] . "</td><td>" . $rows['password'] . "</td></tr>";
+echo "<tr><td>". $rows['meal_name'] . "</td><td><a class='btn' href='" . $rows['meal_url'] . "' target='_blank'>Link</a></td></tr>";
 };
 ?>
 </table>

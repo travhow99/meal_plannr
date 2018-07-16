@@ -28,6 +28,14 @@
 </head>
 <body>
 
+  <div id="favorites" class="container">
+    <?php
+        require 'functions.php';
+        echo showFavorites();
+
+    ?>
+  </div>
+
   <div class="container" style="display:none;">
     <h3>Add a New Meal Below</h3>
     <form action="functions.php" method="post">
