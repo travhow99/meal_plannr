@@ -24,7 +24,7 @@
     recipe = jQuery.parseJSON(result);
      console.log(recipe);
        //console.log("got the data,", result);
-       $('.recipe-results').append('<h2>Recipe Results for ' + food);
+       $('.recipe-results').show().append('<h2>Recipe Results for ' + food);
 
        // Sample JSON Response
 
