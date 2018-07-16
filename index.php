@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Register / Login</title>
+    <title>mealplanner.io</title>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -28,7 +28,7 @@
 </head>
 <body>
 
-  <div class="container">
+  <div class="container" style="display:none;">
     <h3>Add a New Meal Below</h3>
     <form action="functions.php" method="post">
       <div class="form-group">

@@ -1,3 +1,7 @@
+body {
+  background: #eaeaea;
+}
+
 .recipe-container {
     background: pink;
     padding: 10px;
@@ -9,4 +13,30 @@
     color: #32e432;
     font-size: 16px;
     font-family: monospace;
+}
+
+.recipe-results {
+  height: 600px;
+}
+
+/* Forward & Back Button Styling */
+.round {
+    color: white;
+    background: purple;
+    border: none;
+    margin: 20px;
+    padding: 20px;
+    font-size: 16px;
+    border-radius: 50%;
+    line-height: 0;
+    transition: 0.4s;
+}
+
+.round:hover {
+    background: #540954;
+}
+
+nav {
+  margin-top: 30px;
+  text-align: center;
 }
