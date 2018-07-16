@@ -16,7 +16,21 @@ body {
 }
 
 .recipe-results {
-  height: 600px;
+    height: 600px;
+    padding: 10px;
+    background: #d87f7f;
+    border: 2px solid #8e5353;
+    border-radius: 8px;
+    margin-top: 30px;
+    display: none;
+}
+
+.recipe-results h2 {
+  text-align: center;
+}
+
+.recipe-container img {
+    user-select: none;
 }
 
 /* Forward & Back Button Styling */
