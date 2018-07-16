@@ -8,17 +8,19 @@ $dbName = "meal_plannr";
 $conn = mysqli_connect($host, $userName, $password, $dbName);
 
 // Check connection
+/*
 if (mysqli_connect_errno())
   {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 } else {
   echo 'Connected successfully.';
 }
-
+*/
 
 //echo '<br>'.$_POST['meal_name'];
 //echo '<br>'.$_POST['meal_url'];
 
+// Add to database feature, add back
       mysqli_query($conn,"SELECT * FROM meals");
 
       if (!is_null($_POST['meal_name']) && !is_null($_POST['meal_url'])) {
@@ -32,6 +34,7 @@ if (mysqli_connect_errno())
 
       }
 
+
 //Add favorites to div
 function showFavorites(){
   $host = "localhost";
@@ -43,21 +46,16 @@ function showFavorites(){
   $conn = mysqli_connect($host, $userName, $password, $dbName);
 
   $favorites = mysqli_query($conn,"SELECT * FROM meals");
-  echo "<table>
 
-  <tr>
-
-  <td>Meal</td>
-  <td>Url</td>
-  </tr>";
 
   while ($row = mysqli_fetch_array($favorites)){
     /* print_r($row["meal_name"]);
     echo "<br>";
     print_r($row["meal_url"]); */
 
-    echo "<tr><td>". $row['meal_name'] . "</td><td><a class='btn' href='" . $row['meal_url'] . "' target='_blank'>Link</a></td></tr>";
+    echo "<a class='btn btn-success' href='" . $row['meal_url'] . "' target='_blank'>". $row['meal_name'] . "</a>";
   };
+
 }
 
 

@@ -29,6 +29,7 @@
 <body>
 
   <div id="favorites" class="container">
+    <h3>Past Favorites</h3>
     <?php
         require 'functions.php';
         echo showFavorites();
@@ -36,7 +37,7 @@
     ?>
   </div>
 
-  <div class="container" style="display:none;">
+  <div class="container">
     <h3>Add a New Meal Below</h3>
     <form action="functions.php" method="post">
       <div class="form-group">
