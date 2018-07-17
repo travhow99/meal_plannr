@@ -33,6 +33,11 @@ body {
     user-select: none;
 }
 
+#favorites .panel {
+    max-height: 200px;
+    overflow: auto;
+}
+
 /* Forward & Back Button Styling */
 .round {
     color: white;

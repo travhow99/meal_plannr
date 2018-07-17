@@ -28,13 +28,22 @@
 </head>
 <body>
 
+  <h1 style='text-align:center;'>mealPlannr</h1>
+
   <div id="favorites" class="container">
-    <h3>Past Favorites</h3>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>Past Favorites</h3>
+      </div>
+      <div class="panel-body">
+
     <?php
         require 'functions.php';
         echo showFavorites();
 
     ?>
+      </div>
+    </div>
   </div>
 
   <div class="container">
