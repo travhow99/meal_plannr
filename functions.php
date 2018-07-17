@@ -20,12 +20,15 @@ if (mysqli_connect_errno())
 //echo '<br>'.$_POST['meal_name'];
 //echo '<br>'.$_POST['meal_url'];
 
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 // Add to database feature, add back
       mysqli_query($conn,"SELECT * FROM meals");
 
-      if (!is_null($_POST['meal_name']) && !is_null($_POST['meal_url'])) {
-        $meal_name = $_POST['meal_name'];
-        $url = $_POST['meal_url'];
+      $meal_name = $_POST['meal_name'];
+      $url = $_POST['meal_url'];
+
+      if (!empty($meal_name) && !empty($url)) {
 
         //Insert Query of SQL
         mysqli_query($conn, "INSERT INTO meals(meal_name, meal_url) VALUES ('$meal_name', '$url')");
@@ -33,6 +36,7 @@ if (mysqli_connect_errno())
         echo "Affected rows: " . mysqli_affected_rows($conn);
 
       }
+    }
 
 
 //Add favorites to div
