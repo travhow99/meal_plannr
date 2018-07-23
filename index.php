@@ -90,19 +90,36 @@
     </select>
 
     <button id="addNeeded" class="btn btn-success">Add to Pantry</button>
+    <span id="pantryError" class="bg-danger">Select your time line!</span>
 
     <div id="needed" class="row">
       <div id="stocked" class="col-xs-4">
         <h3>Stocked Up!</h3>
+        <?php
+
+          require 'pantry.php';
+          showPantry($stocked);
+
+        ?>
       </div>
       <div id="runningLow" class="col-xs-4">
         <h3>Running Low...</h3>
+        <?php
+
+          showPantry($low);
+
+        ?>
       </div>
       <div id="needNow" class="col-xs-4">
         <h3 class="text-danger">Desperately Needed!</h3>
+        <?php
+
+          showPantry($desperate);
+
+        ?>
       </div>
     </div>
-    
+
   </div>
 
 

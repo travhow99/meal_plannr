@@ -38,9 +38,10 @@ if (mysqli_connect_errno())
       }
     }
 
-
+// TO DO
+//  Pass variable to function for reusability
 //Add favorites to div
-function showFavorites(){
+function showFavorites() {
   $host = "localhost";
   $userName = "root";
   $password = "root";

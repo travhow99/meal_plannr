@@ -155,10 +155,14 @@
 
    $("#addNeeded").click(function() {
 
+
      let itemName = $("#neededInput").val();
      let timeLine = $("#timeLine").val();
 
-     console.log(timeLine, itemName);
+     if (timeLine === null) {
+       $("#pantryError").show();
+       return;
+     }
 
      $.post("pantry.php",
      {

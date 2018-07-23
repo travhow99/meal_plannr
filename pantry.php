@@ -9,10 +9,10 @@
 
   if (mysqli_connect_errno()){
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  } else {
+  }/* else {
     echo 'Connected successfully.';
   }
-
+*/
   /* Queries for each pantry category */
   $sql = "SELECT * FROM pantry";
 
@@ -23,13 +23,26 @@
 
   $result = mysqli_query($conn, $sql);
 
+  $low = mysqli_query($conn, $low_query);
+  $stocked = mysqli_query($conn, $stocked_query);
+  $desperate = mysqli_query($conn, $desperate_query);
+
+  function showPantry($query) {
+
+    while ($row = mysqli_fetch_array($query)) {
+      print_r($row['itemName']);
+      echo "<br>";
+    }
+
+  }
+/*
   while ($row = mysqli_fetch_array($result)) {
     echo("<br>");
     print_r($row['itemName']);
     echo " -- ";
     print_r($row['timeLine']);
   }
-
+*/
 
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
     echo "posted";
@@ -47,6 +60,7 @@
 
     }
   }
+
 
   mysqli_close($conn);
 
