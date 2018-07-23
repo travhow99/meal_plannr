@@ -3,6 +3,7 @@
 
 <head>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <title>mealplanner.io</title>
 
@@ -16,8 +17,6 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <!-- Font Awesome !-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
@@ -33,17 +32,17 @@
   <h1 style='text-align:center;'>mealPlannr</h1>
 
   <div id="favorites" class="container">
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
       <div class="panel-heading">
         <h3>Past Favorites</h3>
       </div>
       <div class="panel-body">
 
         <?php
-        require 'functions.php';
-        echo showFavorites();
+            require 'functions.php';
+            echo showFavorites();
 
-    ?>
+        ?>
       </div>
     </div>
   </div>
@@ -75,9 +74,37 @@
   <div class="container">
     <div class="row recipe-results">
     </div>
+    <hr style="border-color:white">
   </div>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <div id="pantry" class="container">
+    <h2>Pantry</h2>
+
+    <input id="neededInput" name="itemName" type="text" placeholder="Add to your list!"></input>
+    <!-- <input id="timeLine" name="timeLine" type="text" placeholder="When do you need it?"></input> !-->
+    <select id="timeLine" name="timeLine">
+      <option value="" disabled hidden selected>What's your supply like?</option>
+      <option value="stocked">Just Stocked It</option>
+      <option value="low">Running Low</option>
+      <option value="desperate">Need It Now</option>
+    </select>
+
+    <button id="addNeeded" class="btn btn-success">Add to Pantry</button>
+
+    <div id="needed" class="row">
+      <div id="stocked" class="col-xs-4">
+        <h3>Stocked Up!</h3>
+      </div>
+      <div id="runningLow" class="col-xs-4">
+        <h3>Running Low...</h3>
+      </div>
+      <div id="needNow" class="col-xs-4">
+        <h3 class="text-danger">Desperately Needed!</h3>
+      </div>
+    </div>
+    
+  </div>
+
 
   <script src="app.js"></script>
 
