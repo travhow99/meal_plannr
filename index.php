@@ -115,7 +115,7 @@
 
         ?>
       </div>
-      <div id="needNow" class="col-xs-4">
+      <div id="pantry" class="col-xs-4">
         <h3 class="text-danger">Desperately Needed!</h3>
         <?php
 
