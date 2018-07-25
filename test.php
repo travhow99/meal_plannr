@@ -4,8 +4,8 @@
 
 <tr>
 
-<td>Name</td>
-<td>Age</td>
+<td>Meal</td>
+<td>Url</td>
 </tr>
 <?php
 
@@ -26,7 +26,7 @@ $stmt = $db->query('SELECT * from '.$table);
 $db = NULL;
 
 while($rows = $stmt->fetch()){
-echo "<tr><td>". $rows['username'] . "</td><td>" . $rows['password'] . "</td></tr>";
+echo "<tr><td>". $rows['username'] . "</td><td><a class='btn' href='" . $rows['password'] . "' target='_blank'>Link</a></td></tr>";
 };
 ?>
 </table>

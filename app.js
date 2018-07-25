@@ -152,9 +152,44 @@
      });
      */
 
+
+   $("#addNeeded").click(function() {
+
+
+     let itemName = $("#neededInput").val();
+     let timeLine = $("#timeLine").val();
+
+     if (timeLine === null) {
+       $("#pantryError").show();
+       return;
+     }
+
+     $.post("pantry.php",
+     {
+         itemName: itemName,
+         timeLine: timeLine
+     },
+     function(){
+         $('#needed').prepend(itemName + " added!");
+     });
+
+   });
+
+   $("#timeLine").keypress(function(e) {
+     if (e.which == 13) {
+       $("#addNeeded").click();
+     }
+   });
+
    $("input").keypress(function(e) {
   	if (e.which == 13) {
   		console.log('enter');
-  		$(this).next().click();
+
+      // Adjust if adding to #pantry
+      if (this.id === 'neededInput') {
+        $("#addNeeded").click();
+      } else {
+  		  $(this).next().click();
+      }
     }
   });
