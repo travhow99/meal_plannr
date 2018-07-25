@@ -25,7 +25,7 @@
 
         header("location: index.php");
       }else {
-         $error = "Your Login Name or Password is invalid";
+         $error = "<i class='fas fa-exclamation-circle'></i><span>Your Login Name or Password is invalid</span>";
       }
    }
 ?>
@@ -52,25 +52,38 @@
     <!-- Font Awesome !-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
 
     <link rel="icon" type="image/gif" href="images/coffee2.gif">
 
   </head>
 
-   <body bgcolor = "#FFFFFF">
+   <body bgcolor = "#eaeaea">
+
+     <div align = 'center'>
+       <h1>Welcome to mealPlannr.io!</h1>
+       <h3>Sign in below to start planning!</h3>
+     </div>
 
       <div align = "center">
-         <div style = "width:300px; border: solid 1px #333333; " align = "left">
-            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Login</b></div>
+         <div id="login-box" style = "width:300px;">
+           <div class="login-image">
+             <img class='img-responsive' src="images/apple.png" />
+           </div>
 
             <div style = "margin:30px">
 
                <form action = "" method = "post">
-                  <label>Username: </label><input type = "text" name = "username" class = "box"/><br /><br />
-                  <label>Password: </label><input type = "password" name = "password" class = "box" /><br/><br />
-                  <input type = "submit" value = " Submit " /><br />
+                  <label><i class="fas fa-user"></i></label>
+                  <input type = "text" name = "username" placeholder="Username" class="login-input"/><br /><br />
+                  <label><i class="fas fa-lock"></i></label>
+                  <input type = "password" name = "password" placeholder="Password" class="login-input"/><br/><br />
+                  <input class='btn' type = "submit" value = " Log In" /><br />
                </form>
+
+               <div class="register">
+                 <a href="#">Register</a>
+               </div>
 
                <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
 
