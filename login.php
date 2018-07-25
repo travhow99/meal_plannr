@@ -11,7 +11,7 @@
       $sql = "SELECT id FROM users WHERE username = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($conn,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
+      //$active = $row['active'];
 
       $count = mysqli_num_rows($result);
 
@@ -19,11 +19,11 @@
 
       if($count == 1) {
         echo "Welcome ".$myusername;
-        /*
-         session_register("myusername");
+
+         //session_register("myusername");
          $_SESSION['login_user'] = $myusername;
-*/
-        // header("location: welcome.php");
+
+        header("location: index.php");
       }else {
          $error = "Your Login Name or Password is invalid";
       }

@@ -1,3 +1,7 @@
+<?php
+   include('session.php');
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -30,6 +34,7 @@
 <body>
 
   <h1 style='text-align:center;'>mealPlannr</h1>
+  <h1>Welcome <?php echo $login_session; ?></h1>
 
   <div id="favorites" class="container">
     <div class="panel panel-primary">
