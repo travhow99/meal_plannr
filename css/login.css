@@ -56,6 +56,10 @@ label {
     line-height: 2;
 }
 
+.login-input:focus {
+  outline: none;
+}
+
 input.btn {
     width: 100%;
     background: #cab642;
