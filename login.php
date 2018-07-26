@@ -60,15 +60,11 @@
 
    <body bgcolor = "#eaeaea">
 
-     <div align = 'center'>
-       <h1>Welcome to mealPlannr.io!</h1>
-       <h3>Sign in below to start planning!</h3>
-     </div>
-
       <div align = "center">
          <div id="login-box" style = "width:300px;">
+           <h3 style="color: #d7e8ef;">mealPlannr.io</h3>
            <div class="login-image">
-             <img class='img-responsive' src="images/apple.png" />
+             <img class='img-responsive' src="images/spoon.png" />
            </div>
 
             <div style = "margin:30px">
