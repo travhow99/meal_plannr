@@ -61,4 +61,5 @@ nav {
 }
 
 /* PANTRY */
-#pantryError {display:none;}
+
+#pantry, #pantryError {display:none;}
