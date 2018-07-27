@@ -1,5 +1,17 @@
+html {height: 100%;}
 body {
-  background: #eaeaea;
+  /*background: #eaeaea;*/
+
+  background: url(https://www.outdoorproject.com/sites/default/files/features/dpl_9706_1.jpg);
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+
 }
 
 .recipe-container {
@@ -62,4 +74,4 @@ nav {
 
 /* PANTRY */
 
-#pantry, #pantryError {display:none;}
+#pantryError {display:none;}
