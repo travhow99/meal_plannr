@@ -39,6 +39,11 @@ body {
     color: #f9c943;
 }
 
+.day {
+    display: inline-block;
+    width: calc(20% - 4px);
+}
+
 .recipe-container {
     background: pink;
     padding: 10px;
