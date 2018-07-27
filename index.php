@@ -50,9 +50,12 @@
       <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
           <h3>HOME</h3>
-          <p>Some content.</p>
+          <h5>What's on the menu this week?</h5>
           <div class="calendar">
-            <div class="day">Monday</div>
+            <div class="day">
+              <span>Monday</span>
+              <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+            </div>
             <div class="day">Tuesday</div>
             <div class="day">Wednesday</div>
             <div class="day">Thursday</div>
