@@ -14,6 +14,15 @@ body {
 
 }
 
+
+/* dashboard design */
+#dashboard {
+    min-height: 720px;
+    background: #707a76e8;
+    border-radius: 5px;
+    color: white;
+}
+
 .recipe-container {
     background: pink;
     padding: 10px;

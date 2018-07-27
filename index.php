@@ -37,7 +37,7 @@
     <h1>Welcome <?php echo $login_session; ?></h1>
 
     <!-- tabs !-->
-    <div class="container">
+    <div id="dashboard" class="container">
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
         <li><a data-toggle="tab" href="#favorites">Favorites</a></li>
@@ -142,7 +142,7 @@
       </div>
     </div>
   !-->
-
+<!--
     <div class="container">
       <h3>Add a New Meal Below</h3>
       <form action="functions.php" method="post">
@@ -157,7 +157,7 @@
         <button type="submit" class="btn btn-default ">Submit</button>
       </form>
     </div>
-
+!-->
   <!--
     <div class="container recipeSearch">
       <h3>Find a New Recipe</h3>
