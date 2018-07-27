@@ -23,6 +23,22 @@ body {
     color: white;
 }
 
+/* Tabs */
+.nav-tabs>li>a {
+    color: white;
+}
+
+#welcome {float: right;}
+
+#logOut {
+    float: right;
+    clear: right;
+}
+
+#logOut a {
+    color: #f9c943;
+}
+
 .recipe-container {
     background: pink;
     padding: 10px;
@@ -36,13 +52,16 @@ body {
     font-family: monospace;
 }
 
+#foodInput {color: black;}
+
 .recipe-results {
+  /*
     height: 600px;
     padding: 10px;
     background: #d87f7f;
     border: 2px solid #8e5353;
     border-radius: 8px;
-    margin-top: 30px;
+    margin-top: 30px; */
     display: none;
 }
 

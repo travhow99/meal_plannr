@@ -10,6 +10,14 @@ body {
     overflow: hidden;
 }
 
+.logOut {
+  text-align: center;
+  margin-top: 0;
+  position: absolute;
+  top: 20px;
+  left: 40px;
+}
+
 .login-container {
   width: 300px;
 }

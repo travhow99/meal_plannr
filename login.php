@@ -60,6 +60,14 @@
 
    <body bgcolor = "#eaeaea">
 
+       <?php
+        if(isset($_GET['status'])) {
+          echo "<h3 class='logOut''>Logged out successfully.</h3>";
+        }
+       ?>
+
+
+
       <div align = "center">
          <div id="login-box" style = "width:300px;">
            <h3 style="color: #d7e8ef;">mealPlannr.io</h3>

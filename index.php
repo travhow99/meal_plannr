@@ -34,7 +34,6 @@
 <body>
   <div class="container">
     <h1 style='text-align:center;'>mealPlannr</h1>
-    <h1>Welcome <?php echo $login_session; ?></h1>
 
     <!-- tabs !-->
     <div id="dashboard" class="container">
@@ -43,12 +42,22 @@
         <li><a data-toggle="tab" href="#favorites">Favorites</a></li>
         <li><a data-toggle="tab" href="#mealSearch">Meal Search</a></li>
         <li><a data-toggle="tab" href="#pantry">Pantry</a></li>
+
+        <span id="welcome"><i class="fas fa-coffee"></i> <?php echo $login_session; ?></span>
+        <span id="logOut"><a href="logout.php">Log Out</a></span>
       </ul>
 
       <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
           <h3>HOME</h3>
           <p>Some content.</p>
+          <div class="calendar">
+            <div class="day">Monday</div>
+            <div class="day">Tuesday</div>
+            <div class="day">Wednesday</div>
+            <div class="day">Thursday</div>
+            <div class="day">Friday</div>
+          </div>
         </div>
         <div id="favorites" class="tab-pane fade">
           <h3>Favorites</h3>
@@ -68,7 +77,7 @@
 
           </div>
 
-          <div class="container">
+          <div class="">
             <div class="row recipe-results">
             </div>
             <hr style="border-color:white">
