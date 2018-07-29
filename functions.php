@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $host = "localhost";
 $userName = "root";
 $password = "root";
@@ -6,6 +8,7 @@ $dbName = "meal_plannr";
 
 // Create database connection
 $conn = mysqli_connect($host, $userName, $password, $dbName);
+
 
 // Check connection
 /*
@@ -21,6 +24,8 @@ if (mysqli_connect_errno())
 //echo '<br>'.$_POST['meal_url'];
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user = $_SESSION['login_user'];
+
 
 // Add to database feature, add back
       mysqli_query($conn,"SELECT * FROM meals");
@@ -31,7 +36,7 @@ if (mysqli_connect_errno())
       if (!empty($meal_name) && !empty($url)) {
 
         //Insert Query of SQL
-        mysqli_query($conn, "INSERT INTO meals(meal_name, meal_url) VALUES ('$meal_name', '$url')");
+        mysqli_query($conn, "INSERT INTO meals(meal_name, meal_url, user) VALUES ('$meal_name', '$url', '$user')");
 
         echo "Affected rows: " . mysqli_affected_rows($conn);
 
@@ -47,10 +52,13 @@ function showFavorites() {
   $password = "root";
   $dbName = "meal_plannr";
 
+  $user = $_SESSION['login_user'];
+
+
   // Create database connection
   $conn = mysqli_connect($host, $userName, $password, $dbName);
 
-  $favorites = mysqli_query($conn,"SELECT * FROM meals");
+  $favorites = mysqli_query($conn,"SELECT * FROM meals WHERE user='$user'");
 
 
   while ($row = mysqli_fetch_array($favorites)){
@@ -63,6 +71,10 @@ function showFavorites() {
 
 }
 
+function get_username() {
+  global $current_user;
+
+}
 
 
 
