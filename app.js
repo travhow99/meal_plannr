@@ -77,7 +77,7 @@
                  meal_url: meal_url
              },
              function(){
-               $(parent).append('<p class="confirmation">' + meal_name + ' successfully added!</p>');
+               $(parent).append('<p class="confirmation">Added!</p>');
                  //$(this).append(data + "added!");
              });
            });

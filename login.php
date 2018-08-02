@@ -6,7 +6,7 @@
       // username and password sent from form
 
       $myusername = mysqli_real_escape_string($conn,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($conn,$_POST['password']);
+      $mypassword = mysqli_real_escape_string($conn,md5($_POST['password']));
 
       $sql = "SELECT id FROM users WHERE username = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($conn,$sql);
@@ -55,6 +55,10 @@
     <link rel="stylesheet" href="css/login.css">
 
     <link rel="icon" type="image/gif" href="images/coffee2.gif">
+
+    <!-- Google fonts !-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Source+Sans+Pro" rel="stylesheet">
+
 
   </head>
 

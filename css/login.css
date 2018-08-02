@@ -8,6 +8,9 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
+
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 .logOut {

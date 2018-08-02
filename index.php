@@ -28,6 +28,9 @@
   <link rel="stylesheet" href="css/style.css">
 
   <link rel="icon" type="image/gif" href="images/coffee2.gif">
+  <!-- Google fonts !-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Source+Sans+Pro" rel="stylesheet">
+
 
 </head>
 
@@ -56,10 +59,22 @@
               <span>Monday</span>
               <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i> Add Meal</button>
             </div>
-            <div class="day">Tuesday</div>
-            <div class="day">Wednesday</div>
-            <div class="day">Thursday</div>
-            <div class="day">Friday</div>
+            <div class="day">
+              <span>Tuesday</span>
+              <button class="addMeal btn btn-success" id="addTuesday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+            </div>
+            <div class="day">
+              <span>Wednesday</span>
+              <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+            </div>
+            <div class="day">
+              <span>Thursday</span>
+              <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+            </div>
+            <div class="day">
+              <span>Friday</span>
+              <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+            </div>
           </div>
         </div>
         <div id="favorites" class="tab-pane fade">

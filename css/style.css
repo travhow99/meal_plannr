@@ -11,6 +11,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
 
 }
 
@@ -43,6 +44,10 @@ body {
 .day {
     display: inline-block;
     width: calc(20% - 4px);
+}
+
+.addMeal {
+  display: block;
 }
 
 .recipe-container {/*
