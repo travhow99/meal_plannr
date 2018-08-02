@@ -50,7 +50,7 @@
               // Create Link
              let foodURL = "<a class='btn btn-default btn-block' href='" + recipe.recipes[x].source_url + "' target='_blank'><i class='fas fa-utensils'></i></a>";
 
-             let foodPic = "<img src='" + recipe.recipes[x].image_url + "' class='image img-responsive' />";
+             let foodPic = "<div style='background-image:url(" + recipe.recipes[x].image_url + ")' class='image ' ></div>";
 
              let title = recipe.recipes[x].title;
              //console.log(foodURL, foodPic, title);

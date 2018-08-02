@@ -50,12 +50,9 @@ body {
   display: block;
 }
 
-.recipe-container {/*
-    background: pink;
-    padding: 10px;
-    border: 2px solid #b57a84;
-    border-radius: 20px;
-    */
+.recipe-container {
+  display: inline-block;
+  width: 100%;
 }
 
 .confirmation {
@@ -72,14 +69,18 @@ body {
 
 /* Results overlay */
 .image-container {
-  position: relative;
+    display: block;
+    width: 100%;
 }
 
 .image {
-  display: block;
-  width: 100%;
-  height: auto;
-  margin-bottom: 5px;
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .overlay {
