@@ -113,6 +113,11 @@
    // Function to show proper row
    function changePage() {
      console.log(page);
+
+     // Add .active to current page
+     $('.pagination>li').removeClass('active');
+     $('.pagination>li:nth-of-type(' + (page + 2) + ')').addClass('active');
+
      if (page !== 0 && page !== 5){
        $('#pageBack').removeClass('disabled');
        $('#pageForward').removeClass('disabled');
