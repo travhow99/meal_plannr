@@ -154,5 +154,8 @@ nav {
 }
 
 /* PANTRY */
+#pantry input, #pantry select {
+  color: black;
+}
 
 #pantryError {display:none;}

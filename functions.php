@@ -66,7 +66,7 @@ function showFavorites() {
     echo "<br>";
     print_r($row["meal_url"]); */
 
-    echo "<a class='btn btn-success' href='" . $row['meal_url'] . "' target='_blank'>". $row['meal_name'] . "</a>";
+    echo "<a draggable='true' class='btn btn-success' href='" . $row['meal_url'] . "' target='_blank'>". $row['meal_name'] . "</a>";
   };
 
 }

@@ -42,7 +42,7 @@
     <div id="dashboard" class="container">
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-        <li><a data-toggle="tab" href="#favorites">Favorites</a></li>
+        <li><a data-toggle="tab" href="#favorites">Cook Book</a></li>
         <li><a data-toggle="tab" href="#mealSearch">Meal Search</a></li>
         <li><a data-toggle="tab" href="#pantry">Pantry</a></li>
 
@@ -78,11 +78,11 @@
           </div>
         </div>
         <div id="favorites" class="tab-pane fade">
-          <h3>Favorites</h3>
+          <h3>Cook Book</h3>
           <div id="favorites">
             <?php
                 require 'functions.php';
-                echo showFavorites();
+                echo showFavorites(); 
             ?>
           </div>
         </div>
@@ -151,54 +151,6 @@
         </div>
       </div>
     </div>
-
-  <!--
-    <div id="favorites" class="container">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3>Past Favorites</h3>
-        </div>
-        <div class="panel-body">
-
-          <f?php
-              require 'functions.php';
-              echo showFavorites();
-
-          ?>
-        </div>
-      </div>
-    </div>
-  !-->
-<!--
-    <div class="container">
-      <h3>Add a New Meal Below</h3>
-      <form action="functions.php" method="post">
-        <div class="form-group">
-          <label for="meal_name">Meal Name:</label>
-          <input type="text" name="meal_name" class="form-control" id="meal_name">
-        </div>
-        <div class="form-group">
-          <label for="url">URL:</label>
-          <input type="text" name="meal_url" class="form-control" id="url">
-        </div>
-        <button type="submit" class="btn btn-default ">Submit</button>
-      </form>
-    </div>
-!-->
-  <!--
-    <div class="container recipeSearch">
-      <h3>Find a New Recipe</h3>
-      <input id="foodInput" type='text' placeholder="Main Ingredient"></input>
-      <button id="searchRecipe" class="btn btn-primary">Find Recipe</button>
-
-    </div>
-
-    <div class="container">
-      <div class="row recipe-results">
-      </div>
-      <hr style="border-color:white">
-    </div>
-  !-->
 
   </div>
 

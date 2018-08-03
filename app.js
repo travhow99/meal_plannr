@@ -144,6 +144,13 @@
    }
  });
 
+ // .addMeal buttons for home (weekly calendar)
+ $('.addMeal').click(function(){
+   console.log($("#favorites a").text());
+
+   //$(this).before('tacos');
+ });
+
  // Function to add recipe to database
  /*
  $('.addRecipe').click(function(){
