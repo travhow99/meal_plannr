@@ -206,3 +206,11 @@
       }
     }
   });
+
+  // Add meals to calendar
+  $('.fa-cart-plus').hover(function() {
+    console.log('click');
+    $(this).siblings('.daysOfWeek').show();
+  });/*, function() {
+    $('.daysOfWeek').hide();
+  }); */

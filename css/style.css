@@ -131,6 +131,22 @@ body {
     overflow: auto;
 }
 
+.favoriteRecipe {
+  position: relative;
+  width: fit-content;
+
+}
+
+.daysOfWeek {
+    position: absolute;
+    right: 0;
+    top: -15px;
+}
+
+.daysOfWeek a {
+  color: white;
+}
+
 /* Forward & Back Button Styling */
 .round {
     color: white;
