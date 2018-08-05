@@ -1,9 +1,8 @@
 
 
  let API_key = "69ada04a6ea560cac9738b2e25124938";
- let result;
+ let result, recipe;
 
- let recipe;
 
  $('#searchRecipe').click(function() {
    let food = $('#foodInput').val();

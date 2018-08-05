@@ -65,15 +65,15 @@
             </div>
             <div class="day">
               <span>Wednesday</span>
-              <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+              <button class="addMeal btn btn-success" id="addWednesday"><i class="fas fa-plus-circle"></i> Add Meal</button>
             </div>
             <div class="day">
               <span>Thursday</span>
-              <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+              <button class="addMeal btn btn-success" id="addThursday"><i class="fas fa-plus-circle"></i> Add Meal</button>
             </div>
             <div class="day">
               <span>Friday</span>
-              <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+              <button class="addMeal btn btn-success" id="addFriday"><i class="fas fa-plus-circle"></i> Add Meal</button>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@
           <div id="favorites">
             <?php
                 require 'functions.php';
-                echo showFavorites(); 
+                echo showFavorites();
             ?>
           </div>
         </div>
