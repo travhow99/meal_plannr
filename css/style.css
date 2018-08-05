@@ -1,12 +1,59 @@
+html {height: 100%;}
 body {
-  background: #eaeaea;
+  /*background: #eaeaea;*/
+
+  background: url(https://www.outdoorproject.com/sites/default/files/features/dpl_9706_1.jpg);
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+
+/* dashboard design */
+#dashboard {
+    min-height: 720px;
+    background: #707a76e8;
+    border-radius: 5px;
+    color: white;
+    padding: 15px;
+}
+
+/* Tabs */
+.nav-tabs>li>a {
+    color: white;
+}
+
+#welcome {float: right;}
+
+#logOut {
+    float: right;
+    clear: right;
+}
+
+#logOut a {
+    color: #f9c943;
+}
+
+.day {
+    display: inline-block;
+    width: calc(20% - 4px);
+}
+
+.addMeal {
+  display: block;
 }
 
 .recipe-container {
-    background: pink;
-    padding: 10px;
-    border: 2px solid #b57a84;
-    border-radius: 20px;
+  display: inline-block;
+  width: 100%;
+  position: relative;
 }
 
 .confirmation {
@@ -15,15 +62,61 @@ body {
     font-family: monospace;
 }
 
+#foodInput {color: black;}
+
 .recipe-results {
-    height: 600px;
-    padding: 10px;
-    background: #d87f7f;
-    border: 2px solid #8e5353;
-    border-radius: 8px;
-    margin-top: 30px;
     display: none;
 }
+
+/* Results overlay */
+.image-container {
+    display: block;
+    width: 100%;
+}
+
+.image {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 200px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+
+
+
+.overlay-text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+/* end overlay */
+
 
 .recipe-results h2 {
   text-align: center;
@@ -61,5 +154,8 @@ nav {
 }
 
 /* PANTRY */
+#pantry input, #pantry select {
+  color: black;
+}
 
-#pantry, #pantryError {display:none;}
+#pantryError {display:none;}

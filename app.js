@@ -1,9 +1,8 @@
 
 
  let API_key = "69ada04a6ea560cac9738b2e25124938";
- let result;
+ let result, recipe;
 
- let recipe;
 
  $('#searchRecipe').click(function() {
    let food = $('#foodInput').val();
@@ -50,12 +49,12 @@
               // Create Link
              let foodURL = "<a class='btn btn-default btn-block' href='" + recipe.recipes[x].source_url + "' target='_blank'><i class='fas fa-utensils'></i></a>";
 
-             let foodPic = "<img src='" + recipe.recipes[x].image_url + "' class='img-responsive' />";
+             let foodPic = "<div style='background-image:url(" + recipe.recipes[x].image_url + ")' class='image ' ></div>";
 
              let title = recipe.recipes[x].title;
              //console.log(foodURL, foodPic, title);
 
-             $('.recipe-results').append('<div class="col-sm-3 group' + groupNumber + '"><div class="recipe-container"><h4>' + title + '</h4>' + foodPic + '<br>' + foodURL + ' <a class="btn btn-info btn-block addRecipe"><i class="fas fa-heart"></i></a></div></div>');
+             $('.recipe-results').append('<div class="col-sm-3 group' + groupNumber + '"><div class="recipe-container"><div class="image-container">' + foodPic + '<div class="overlay"><div class="overlay-text">' + title + '</div></div></div></div>' + foodURL + ' <a class="btn btn-info btn-block addRecipe"><i class="fas fa-heart"></i></a></div></div></div>');
            }
 
            changePage();
@@ -65,8 +64,10 @@
 
        // Function to add recipe to database
        $('.addRecipe').click(function(){
-             let meal_name = $(this).siblings('h4').text();
+             let meal_name = $(this).siblings('.recipe-container').find('.overlay-text').text();
+             console.log(meal_name);
              let meal_url = $(this).siblings('a').attr('href');
+             console.log(meal_url);
              let parent = $(this).parent();
 
              $.post("functions.php",
@@ -75,7 +76,7 @@
                  meal_url: meal_url
              },
              function(){
-               $(parent).after('<p class="confirmation">' + meal_name + ' successfully added!</p>');
+               $(parent).append('<p class="confirmation">Added!</p>');
                  //$(this).append(data + "added!");
              });
            });
@@ -111,6 +112,11 @@
    // Function to show proper row
    function changePage() {
      console.log(page);
+
+     // Add .active to current page
+     $('.pagination>li').removeClass('active');
+     $('.pagination>li:nth-of-type(' + (page + 2) + ')').addClass('active');
+
      if (page !== 0 && page !== 5){
        $('#pageBack').removeClass('disabled');
        $('#pageForward').removeClass('disabled');
@@ -135,6 +141,13 @@
        }
      }
    }
+ });
+
+ // .addMeal buttons for home (weekly calendar)
+ $('.addMeal').click(function(){
+   console.log($("#favorites a").text());
+
+   //$(this).before('tacos');
  });
 
  // Function to add recipe to database
