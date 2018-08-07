@@ -53,7 +53,7 @@
       <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
           <h3>HOME</h3>
-          <h5>What's on the menu this week?</h5>
+          <p class="lead">What's on the menu this week?</p>
           <div class="calendar">
             <div class="day">
               <span>Monday</span>

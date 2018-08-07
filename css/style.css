@@ -134,7 +134,7 @@ body {
 .favoriteRecipe {
   position: relative;
   width: fit-content;
-
+  width: -moz-fit-content;
 }
 
 .daysOfWeek {

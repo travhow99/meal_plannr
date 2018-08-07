@@ -209,8 +209,13 @@
 
   // Add meals to calendar
   $('.fa-cart-plus').hover(function() {
-    console.log('click');
+    console.log('hover');
     $(this).siblings('.daysOfWeek').show();
-  });/*, function() {
-    $('.daysOfWeek').hide();
-  }); */
+  }, function() {
+    setTimeout(function() {
+      if (!($('.daysOfWeek:hover').length > 0)) {
+        console.log($('.daysOfWeek:hover').length);
+        $('.daysOfWeek').hide('slow');
+      };
+    }, 300);
+  });
