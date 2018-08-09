@@ -66,7 +66,7 @@ function showFavorites() {
     echo "<br>";
     print_r($row["meal_url"]); */
 
-    echo "<div class='favoriteRecipe'>". $row['meal_name'] . " <a href='" . $row['meal_url'] . "' target='_blank'><i class='fas fa-external-link-alt'></i></a> <i class='fas fa-cart-plus'></i><div class='daysOfWeek' style='display:none'><a>M</a><a>T</a><a>W</a><a>Th</a><a>F</a></div></div>";
+    echo "<div class='favoriteRecipe pop' data-content='<a data-meal=&quot;". $row['meal_name'] . "&quot; class=&quot;dayz&quot;>M</a><a data-meal=&quot;". $row['meal_name'] . "&quot; class=&quot;dayz&quot;>T</a><a data-meal=&quot;". $row['meal_name'] . "&quot; class=&quot;dayz&quot;>W</a><a data-meal=&quot;". $row['meal_name'] . "&quot; class=&quot;dayz&quot;>Th</a><a data-meal=&quot;". $row['meal_name'] . "&quot; class=&quot;dayz&quot;>F</a>' data-toggle='popover'>". $row['meal_name'] . " <a href='" . $row['meal_url'] . "' target='_blank'><i class='fas fa-external-link-alt'></i></a> <i class='fas fa-cart-plus'></i></div>";
   };
 
 }

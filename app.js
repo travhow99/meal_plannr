@@ -208,6 +208,28 @@
   });
 
   // Add meals to calendar
+
+  $(".pop").popover({ trigger: "manual" , html: true, animation:false})
+      .on("mouseenter", function () {
+          var _this = this;
+          $(this).popover("show");
+          $(".popover").on("mouseleave", function () {
+              $(_this).popover('hide');
+          }),
+          $('.dayz').click(function() {
+            console.log($(this).data('meal'));
+          });
+      }).on("mouseleave", function () {
+          var _this = this;
+          setTimeout(function () {
+              if (!$(".popover:hover").length) {
+                  $(_this).popover("hide");
+              }
+          }, 300);
+  });
+
+
+  /*
   $('.fa-cart-plus').hover(function() {
     console.log('hover');
     $(this).siblings('.daysOfWeek').show();
@@ -217,5 +239,6 @@
         console.log($('.daysOfWeek:hover').length);
         $('.daysOfWeek').hide('slow');
       };
-    }, 300);
+    }, 100);
   });
+*/
