@@ -145,8 +145,7 @@
 
  // .addMeal buttons for home (weekly calendar)
  $('.addMeal').click(function(){
-   console.log($("#favorites a").text());
-
+   $(this).siblings('.favoritesDropdown').show();
    //$(this).before('tacos');
  });
 
@@ -217,7 +216,7 @@
               $(_this).popover('hide');
           }),
           $('.dayz').click(function() {
-            console.log($(this).data('meal'));
+            console.log($(this).text() + ' ' + $(this).data('meal'));
           });
       }).on("mouseleave", function () {
           var _this = this;

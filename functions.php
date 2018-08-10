@@ -58,16 +58,44 @@ function showFavorites() {
   // Create database connection
   $conn = mysqli_connect($host, $userName, $password, $dbName);
 
-  $favorites = mysqli_query($conn,"SELECT * FROM meals WHERE user='$user'");
+  $sql = mysqli_query($conn,"SELECT * FROM meals WHERE user='$user'");
 
 
-  while ($row = mysqli_fetch_array($favorites)){
+  while ($row = mysqli_fetch_array($sql)){
     /* print_r($row["meal_name"]);
     echo "<br>";
     print_r($row["meal_url"]); */
 
     echo "<div class='favoriteRecipe pop' data-content='<a data-meal=&quot;". $row['meal_name'] . "&quot; class=&quot;dayz&quot;>M</a><a data-meal=&quot;". $row['meal_name'] . "&quot; class=&quot;dayz&quot;>T</a><a data-meal=&quot;". $row['meal_name'] . "&quot; class=&quot;dayz&quot;>W</a><a data-meal=&quot;". $row['meal_name'] . "&quot; class=&quot;dayz&quot;>Th</a><a data-meal=&quot;". $row['meal_name'] . "&quot; class=&quot;dayz&quot;>F</a>' data-toggle='popover'>". $row['meal_name'] . " <a href='" . $row['meal_url'] . "' target='_blank'><i class='fas fa-external-link-alt'></i></a> <i class='fas fa-cart-plus'></i></div>";
   };
+
+}
+
+// Function for drop down favorites
+function favoritesDropdown() {
+  $host = "localhost";
+  $userName = "root";
+  $password = "root";
+  $dbName = "meal_plannr";
+
+  $user = $_SESSION['login_user'];
+
+
+  // Create database connection
+  $conn = mysqli_connect($host, $userName, $password, $dbName);
+
+  $sql = mysqli_query($conn,"SELECT * FROM meals WHERE user='$user'");
+
+
+  echo "<select class='favoritesDropdown'><option value='' disabled selected hidden>Select your option</option>";
+    while ($row = mysqli_fetch_array($sql)){
+      /* print_r($row["meal_name"]);
+      echo "<br>";
+      print_r($row["meal_url"]); */
+
+      echo "<option>" . $row['meal_name'] . "</option>";
+    };
+  echo "</select>";
 
 }
 

@@ -58,22 +58,38 @@
             <div class="day">
               <span>Monday</span>
               <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+              <?php
+                include 'functions.php';
+                echo favoritesDropdown();
+              ?>
             </div>
             <div class="day">
               <span>Tuesday</span>
               <button class="addMeal btn btn-success" id="addTuesday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+              <?php
+                echo favoritesDropdown();
+              ?>
             </div>
             <div class="day">
               <span>Wednesday</span>
               <button class="addMeal btn btn-success" id="addWednesday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+              <?php
+                echo favoritesDropdown();
+              ?>
             </div>
             <div class="day">
               <span>Thursday</span>
               <button class="addMeal btn btn-success" id="addThursday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+              <?php
+                echo favoritesDropdown();
+              ?>
             </div>
             <div class="day">
               <span>Friday</span>
               <button class="addMeal btn btn-success" id="addFriday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+              <?php
+                echo favoritesDropdown();
+              ?>
             </div>
           </div>
         </div>
@@ -81,7 +97,7 @@
           <h3>Cook Book</h3>
           <div id="favorites">
             <?php
-                require 'functions.php';
+                //require 'functions.php';
                 echo showFavorites();
             ?>
           </div>

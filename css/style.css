@@ -10,7 +10,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden;
+  /*overflow: hidden;*/
   font-family: 'Montserrat', sans-serif;
 
 }
@@ -125,6 +125,8 @@ body {
 .recipe-container img {
     user-select: none;
 }
+
+.favoritesDropdown {display: none;color:black;}
 
 #favorites .panel {
     max-height: 200px;
