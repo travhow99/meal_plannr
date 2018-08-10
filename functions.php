@@ -89,10 +89,6 @@ function favoritesDropdown() {
 
   echo "<div class='dropdown-container'><div class='favoritesDropdown'><span>Select your option</span>";
     while ($row = mysqli_fetch_array($sql)){
-      /* print_r($row["meal_name"]);
-      echo "<br>";
-      print_r($row["meal_url"]); */
-
       echo "<span>" . $row['meal_name'] . "</span>";
     };
   echo "</div></div>";

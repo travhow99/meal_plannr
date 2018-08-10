@@ -156,6 +156,11 @@
    $(this).hide();
  });
 
+ $('.favoritesDropdown>span').click(function(){
+   var $mealName = $(this).text();
+   $(this).closest('.dropdown-container').siblings('button').before($mealName);
+ });
+
  // Function to add recipe to database
  /*
  $('.addRecipe').click(function(){
