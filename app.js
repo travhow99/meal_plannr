@@ -157,8 +157,8 @@
  });
 
  $('.favoritesDropdown>span').click(function(){
-   var $mealName = $(this).text();
-   $(this).closest('.dropdown-container').siblings('button').before($mealName);
+     var $mealName = $(this).text();
+     $(this).closest('.dropdown-container').siblings('.dayMealPlan').html($mealName);
  });
 
  // Function to add recipe to database

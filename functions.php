@@ -87,7 +87,7 @@ function favoritesDropdown() {
   $sql = mysqli_query($conn,"SELECT * FROM meals WHERE user='$user'");
 
 
-  echo "<div class='dropdown-container'><div class='favoritesDropdown'><span>Select your option</span>";
+  echo "<div class='dropdown-container'><div class='favoritesDropdown'>";
     while ($row = mysqli_fetch_array($sql)){
       echo "<span>" . $row['meal_name'] . "</span>";
     };

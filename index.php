@@ -43,7 +43,7 @@
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
         <li><a data-toggle="tab" href="#favorites">Cook Book</a></li>
-        <li><a data-toggle="tab" href="#mealSearch">Meal Search</a></li>
+        <li><a data-toggle="tab" href="#mealSearch">Meal Search</a></li>Click to add a favorite meal below!
         <li><a data-toggle="tab" href="#pantry">Pantry</a></li>
 
         <span id="welcome"><i class="fas fa-coffee"></i> <?php echo $login_session; ?></span>
@@ -57,6 +57,7 @@
           <div class="calendar">
             <div class="day">
               <span>Monday</span><br>
+              <div class="dayMealPlan">Click to add a favorite meal below!</div>
               <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
               <a class="hide-button">hide me</a>
               <?php
@@ -66,6 +67,7 @@
             </div>
             <div class="day">
               <span>Tuesday</span><br>
+              <div class="dayMealPlan">Click to add a favorite meal below!</div>
               <button class="addMeal btn btn-success" id="addTuesday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
               <a class="hide-button">hide me</a>
               <?php
@@ -74,6 +76,7 @@
             </div>
             <div class="day">
               <span>Wednesday</span><br>
+              <div class="dayMealPlan">Click to add a favorite meal below!</div>
               <button class="addMeal btn btn-success" id="addWednesday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
               <a class="hide-button">hide me</a>
               <?php
@@ -82,6 +85,7 @@
             </div>
             <div class="day">
               <span>Thursday</span><br>
+              <div class="dayMealPlan">Click to add a favorite meal below!</div>
               <button class="addMeal btn btn-success" id="addThursday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
               <a class="hide-button">hide me</a>
               <?php
@@ -90,6 +94,7 @@
             </div>
             <div class="day">
               <span>Friday</span><br>
+              <div class="dayMealPlan">Click to add a favorite meal below!</div>
               <button class="addMeal btn btn-success" id="addFriday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
               <a class="hide-button">hide me</a>
               <?php
