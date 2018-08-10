@@ -145,8 +145,15 @@
 
  // .addMeal buttons for home (weekly calendar)
  $('.addMeal').click(function(){
-   $(this).siblings('.favoritesDropdown').show();
+   $('.hide-button').click();
+   $(this).siblings('.dropdown-container').find('.favoritesDropdown').show();
+   $(this).siblings('.hide-button').show();
    //$(this).before('tacos');
+ });
+
+ $('.hide-button').click(function(){
+   $('.favoritesDropdown').hide();
+   $(this).hide();
  });
 
  // Function to add recipe to database

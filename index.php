@@ -56,37 +56,42 @@
           <p class="lead">What's on the menu this week?</p>
           <div class="calendar">
             <div class="day">
-              <span>Monday</span>
-              <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+              <span>Monday</span><br>
+              <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
+              <a class="hide-button">hide me</a>
               <?php
                 include 'functions.php';
                 echo favoritesDropdown();
               ?>
             </div>
             <div class="day">
-              <span>Tuesday</span>
-              <button class="addMeal btn btn-success" id="addTuesday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+              <span>Tuesday</span><br>
+              <button class="addMeal btn btn-success" id="addTuesday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
+              <a class="hide-button">hide me</a>
               <?php
                 echo favoritesDropdown();
               ?>
             </div>
             <div class="day">
-              <span>Wednesday</span>
-              <button class="addMeal btn btn-success" id="addWednesday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+              <span>Wednesday</span><br>
+              <button class="addMeal btn btn-success" id="addWednesday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
+              <a class="hide-button">hide me</a>
               <?php
                 echo favoritesDropdown();
               ?>
             </div>
             <div class="day">
-              <span>Thursday</span>
-              <button class="addMeal btn btn-success" id="addThursday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+              <span>Thursday</span><br>
+              <button class="addMeal btn btn-success" id="addThursday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
+              <a class="hide-button">hide me</a>
               <?php
                 echo favoritesDropdown();
               ?>
             </div>
             <div class="day">
-              <span>Friday</span>
-              <button class="addMeal btn btn-success" id="addFriday"><i class="fas fa-plus-circle"></i> Add Meal</button>
+              <span>Friday</span><br>
+              <button class="addMeal btn btn-success" id="addFriday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
+              <a class="hide-button">hide me</a>
               <?php
                 echo favoritesDropdown();
               ?>

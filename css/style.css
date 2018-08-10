@@ -42,12 +42,12 @@ body {
 }
 
 .day {
-    display: inline-block;
+    display: inline-table;
     width: calc(20% - 4px);
 }
 
 .addMeal {
-  display: block;
+  display: inline-block;
 }
 
 .recipe-container {
@@ -125,8 +125,33 @@ body {
 .recipe-container img {
     user-select: none;
 }
+.favoritesDropdown {
+    height: 280px;
+    overflow: scroll;
+    background: white;
+    border-radius: 0 0 5px 5px;
+    display: none;
+    color:black;
+}
 
-.favoritesDropdown {display: none;color:black;}
+.hide-button {
+    display: none;
+    float: right;
+    color: lightgray;
+    vertical-align: middle;
+    position: absolute;
+    padding-top: 8px;
+    padding-left: 8px;
+}
+.favoritesDropdown > span {
+    display: block;
+    cursor: copy;
+}
+
+.favoritesDropdown > span:hover {
+    background: teal;
+    color: white;
+}
 
 #favorites .panel {
     max-height: 200px;
