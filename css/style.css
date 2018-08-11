@@ -159,6 +159,12 @@ body {
     color: white;
 }
 
+.dayMealPlan {
+    background: whitesmoke;
+    color: grey;
+    height: 80px;
+}
+
 #favorites .panel {
     max-height: 200px;
     overflow: auto;
