@@ -151,21 +151,6 @@
    //$(this).before('tacos');
  });
 
- // Post current calendar selections to DB
- $('.submitCalendar').click(function(){
-   let plannedMeal = $('.dayMealPlan').text();
-   console.log(plannedMeal);
-   $.post("forms.php",
-   {
-
-   },
-   function(data, status){
-     console.log(data);
-   });
- });
-
-
-
  $('.hide-button').click(function(){
    $('.favoritesDropdown').hide();
    $(this).hide();
@@ -174,6 +159,28 @@
  $('.favoritesDropdown>span').click(function(){
      var $mealName = $(this).text();
      $(this).closest('.dropdown-container').siblings('.dayMealPlan').html($mealName);
+ });
+
+ // Post current calendar selections to DB
+ $('.submitCalendar').click(function(){
+   let monday = $('#monday .dayMealPlan').text();
+   let tuesday = $('#tuesday .dayMealPlan').text();
+   let wednesday = $('#wednesday .dayMealPlan').text();
+   let thursday = $('#thursday .dayMealPlan').text();
+   let friday = $('#friday .dayMealPlan').text();
+
+   console.log(monday, tuesday);
+   $.post("forms.php",
+   {
+     mon: monday,
+     tue: tuesday,
+     wed: wednesday,
+     thu: thursday,
+     fri: friday
+   },
+   function(data, status){
+     console.log(data);
+   });
  });
 
  // Function to add recipe to database

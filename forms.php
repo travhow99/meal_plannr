@@ -5,15 +5,21 @@
 
    while ($row = mysqli_fetch_array($sql)){
      //echo $row['meal_name'].'<br>';
-     echo $row['meal_name'];
-     
+     //echo $row['meal_name'];
+
    }
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-     $name = $_POST['name'];
-     $city = $_POST['city'];
+     //echo 'posted '.$_POST['mon'].' and '.$_POST['tue'];
 
-     echo $name;
+     $monday = $_POST['mon'];
+     $tuesday = $_POST['tue'];
+     $wednesday = $_POST['wed'];
+     $thursday = $_POST['thu'];
+     $friday = $_POST['fri'];
+
+
+     echo $monday.$tuesday.$wednesday.$thursday.$friday;
 
    }
 ?>
