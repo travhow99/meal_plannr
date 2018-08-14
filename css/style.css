@@ -3,6 +3,7 @@ body {
   /*background: #eaeaea;*/
 
   background: url(https://www.outdoorproject.com/sites/default/files/features/dpl_9706_1.jpg);
+  background: linear-gradient(to bottom right, white, gray);
   /* Full height */
   height: 100%;
 
@@ -23,6 +24,7 @@ body {
     border-radius: 5px;
     color: white;
     padding: 15px;
+    position: relative;
 }
 
 /* Tabs */
@@ -164,6 +166,14 @@ body {
     color: grey;
     height: 80px;
 }
+
+.submitCalendar button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+
 
 #favorites .panel {
     max-height: 200px;

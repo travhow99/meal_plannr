@@ -39,11 +39,11 @@
     <h1 style='text-align:center;'>mealPlannr</h1>
 
     <!-- tabs !-->
-    <div id="dashboard" class="container">
+    <div id="dashboard" class="">
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
         <li><a data-toggle="tab" href="#favorites">Cook Book</a></li>
-        <li><a data-toggle="tab" href="#mealSearch">Meal Search</a></li>Click to add a favorite meal below!
+        <li><a data-toggle="tab" href="#mealSearch">Meal Search</a></li>
         <li><a data-toggle="tab" href="#pantry">Pantry</a></li>
 
         <span id="welcome"><i class="fas fa-coffee"></i> <?php echo $login_session; ?></span>
@@ -101,6 +101,9 @@
                 echo favoritesDropdown();
               ?>
             </div>
+          </div>
+          <div class="submitCalendar">
+            <button class="btn btn-default">Save Calendar</button>
           </div>
         </div>
         <div id="favorites" class="tab-pane fade">
