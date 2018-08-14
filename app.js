@@ -151,6 +151,21 @@
    //$(this).before('tacos');
  });
 
+ // Post current calendar selections to DB
+ $('.submitCalendar').click(function(){
+   let plannedMeal = $('.dayMealPlan').text();
+   console.log(plannedMeal);
+   $.post("forms.php",
+   {
+
+   },
+   function(data, status){
+     console.log(data);
+   });
+ });
+
+
+
  $('.hide-button').click(function(){
    $('.favoritesDropdown').hide();
    $(this).hide();

@@ -1,7 +1,6 @@
 <?php
    include("config.php");
    session_start();
-   echo $_SESSION;
    if(isset($_SESSION['login_user'])){
       header("location:index.php");
    }

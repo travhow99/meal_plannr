@@ -55,6 +55,7 @@
           <h3>HOME</h3>
           <p class="lead">What's on the menu this week?</p>
           <div class="calendar">
+
             <div class="day">
               <span>Monday</span><br>
               <div class="dayMealPlan">Click to add a favorite meal below!</div>
@@ -102,9 +103,9 @@
               ?>
             </div>
           </div>
-          <div class="submitCalendar">
-            <button class="btn btn-default">Save Calendar</button>
-          </div>
+
+            <button class="submitCalendar btn btn-default" type="submit">Save Calendar</button>
+
         </div>
         <div id="favorites" class="tab-pane fade">
           <h3>Cook Book</h3>
