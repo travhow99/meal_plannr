@@ -18,8 +18,17 @@
      $thursday = $_POST['thu'];
      $friday = $_POST['fri'];
 
+     $mealDay=array();
 
-     echo $monday.$tuesday.$wednesday.$thursday.$friday;
+     array_push($mealDay,$monday,$tuesday,$wednesday,$thursday,$friday);
+
+     print_r($mealDay);
+
+     if ($monday == "Click to add a favorite meal below!") {
+       echo "Error! Please choose a meal for $monday";
+     }
 
    }
+
+   echo date('l').'<br>';
 ?>

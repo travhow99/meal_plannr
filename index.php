@@ -55,7 +55,7 @@
           <h3>HOME</h3>
           <p class="lead">What's on the menu this week?</p>
           <div class="calendar">
-
+            <?php    echo '<div class="week">Week of '.date('M d', strtotime('last Monday')) . ' - ' . date('M d', strtotime('Friday')) . '</div>'; ?>
             <div id='monday' class="day">
               <span>Monday</span><br>
               <div class="dayMealPlan">Click to add a favorite meal below!</div>

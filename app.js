@@ -168,8 +168,25 @@
    let wednesday = $('#wednesday .dayMealPlan').text();
    let thursday = $('#thursday .dayMealPlan').text();
    let friday = $('#friday .dayMealPlan').text();
+   let weekdays = {Monday: monday, Tuesday: tuesday, Wednesday: wednesday, Thursday: thursday, Friday: friday};
 
-   console.log(monday, tuesday);
+   for (let newMeal in weekdays) {
+     if (weekdays[newMeal] === 'Click to add a favorite meal below!'){
+       alert('Please select a meal for ' + newMeal);
+       break;
+     }
+   }
+
+   //weekdays.push(monday, tuesday, wednesday, thursday, friday);
+/*
+   for (let x = 0; x < weekdays.length; x++) {
+     if (weekdays[x] === 'Click to add a favorite meal below!'){
+       alert('Please select ');
+       break;
+     }
+   }
+*/
+   //console.log(monday, tuesday);
    $.post("forms.php",
    {
      mon: monday,
