@@ -176,6 +176,9 @@ body {
     background: whitesmoke;
     color: grey;
     height: 80px;
+
+    overflow: hidden;
+    background-size: cover!important;
 }
 
 .submitCalendar {

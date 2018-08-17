@@ -70,6 +70,11 @@
              //console.log(meal_url);
 
              let meal_pic = $(this).siblings('.recipe-container').find('.image').css('background-image');
+             meal_pic = meal_pic.substring(
+                meal_pic.lastIndexOf('(') + 1,
+                meal_pic.lastIndexOf(')')
+            );
+
              console.log(meal_pic);
 
              let parent = $(this).parent();
@@ -172,8 +177,11 @@
  });
 
  $('.favoritesDropdown>span').click(function(){
-     var $mealName = $(this).text();
-     $(this).closest('.dropdown-container').siblings('.dayMealPlan').html($mealName);
+     let $mealName = $(this).text();
+     let $calendarImage = $(this).data('url');
+     console.log($calendarImage);
+     $(this).closest('.dropdown-container').siblings('.dayMealPlan').after($mealName);
+     $(this).closest('.dropdown-container').siblings('.dayMealPlan').css('background', 'url(' + $calendarImage + ')');
      $(".favoritesDropdown").hide();
  });
 

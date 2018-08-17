@@ -63,7 +63,7 @@
             <div id='monday' class="day">
               <span>Monday</span><br>
               <div class="dayMealPlan">Click to add a favorite meal below!</div>
-              <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
+              <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i></button>
               <a class="hide-button">hide me</a>
               <?php
                 include 'functions.php';
