@@ -65,15 +65,20 @@
        // Function to add recipe to database
        $('.addRecipe').click(function(){
              let meal_name = $(this).siblings('.recipe-container').find('.overlay-text').text();
-             console.log(meal_name);
+             //console.log(meal_name);
              let meal_url = $(this).siblings('a').attr('href');
-             console.log(meal_url);
+             //console.log(meal_url);
+
+             let meal_pic = $(this).siblings('.recipe-container').find('.image').css('background-image');
+             console.log(meal_pic);
+
              let parent = $(this).parent();
 
              $.post("functions.php",
              {
                  meal_name: meal_name,
-                 meal_url: meal_url
+                 meal_url: meal_url,
+                 meal_pic: meal_pic
              },
              function(){
                $(parent).append('<p class="confirmation">Added!</p>');
@@ -144,12 +149,22 @@
  });
 
  // .addMeal buttons for home (weekly calendar)
- $('.addMeal').click(function(){
+ $('.addMeal').click(function(e){
    $('.hide-button').click();
    $(this).siblings('.dropdown-container').find('.favoritesDropdown').show();
-   $(this).siblings('.hide-button').show();
+  // $(this).siblings('.hide-button').show();
+
+   e.stopPropagation();
    //$(this).before('tacos');
  });
+
+ $(".favoritesDropdown").click(function(e){
+    e.stopPropagation();
+  });
+
+  $(document).click(function(){
+      $(".favoritesDropdown").hide();
+  });
 
  $('.hide-button').click(function(){
    $('.favoritesDropdown').hide();
@@ -159,6 +174,7 @@
  $('.favoritesDropdown>span').click(function(){
      var $mealName = $(this).text();
      $(this).closest('.dropdown-container').siblings('.dayMealPlan').html($mealName);
+     $(".favoritesDropdown").hide();
  });
 
  // Post current calendar selections to DB

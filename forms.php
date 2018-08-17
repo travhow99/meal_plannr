@@ -24,10 +24,6 @@
 
      print_r($mealDay);
 
-     if ($monday == "Click to add a favorite meal below!") {
-       echo "Error! Please choose a meal for $monday";
-     }
-
    }
 
    echo date('l').'<br>';

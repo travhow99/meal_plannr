@@ -39,7 +39,7 @@
     <h1 style='text-align:center;'>mealPlannr</h1>
 
     <!-- tabs !-->
-    <div id="dashboard" class="">
+    <div id="dashboard" class="noselect">
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
         <li><a data-toggle="tab" href="#favorites">Cook Book</a></li>
@@ -55,7 +55,11 @@
           <h3>HOME</h3>
           <p class="lead">What's on the menu this week?</p>
           <div class="calendar">
-            <?php    echo '<div class="week">Week of '.date('M d', strtotime('last Monday')) . ' - ' . date('M d', strtotime('Friday')) . '</div>'; ?>
+
+            <?php
+                echo '<div class="week">Week of '.date('M d', strtotime('last Monday')).' - '.date('M d', strtotime('Friday')).'</div>';
+            ?>
+
             <div id='monday' class="day">
               <span>Monday</span><br>
               <div class="dayMealPlan">Click to add a favorite meal below!</div>
