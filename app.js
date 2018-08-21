@@ -52,9 +52,13 @@
              let foodPic = "<div style='background-image:url(" + recipe.recipes[x].image_url + ")' class='image ' ></div>";
 
              let title = recipe.recipes[x].title;
+
+             let f2f_url = recipe.recipes[x].f2f_url;
+
+             getIngredients(f2f_url, title);
              //console.log(foodURL, foodPic, title);
 
-             $('.recipe-results').append('<div class="col-sm-3 group' + groupNumber + '"><div class="recipe-container"><div class="image-container">' + foodPic + '<div class="overlay"><div class="overlay-text">' + title + '</div></div></div></div>' + foodURL + ' <a class="btn btn-info btn-block addRecipe"><i class="fas fa-heart"></i></a></div></div></div>');
+             $('.recipe-results').append('<div class="col-sm-3 group' + groupNumber + '"><div class="recipe-container"><div class="image-container">' + foodPic + '<div class="overlay"><div class="overlay-text">' + title + '</div></div></div></div>' + foodURL + ' <a class="btn btn-info btn-block addRecipe"><i class="fas fa-heart"></i></a><a class="btn btn-info btn-block getList"><i class="fas fa-heart"></i></a></div></div></div>');
            }
 
            changePage();
@@ -302,17 +306,45 @@
           }, 300);
   });
 
+  /* Build function to scrape ingredients */
+  function getIngredients(url, title) {
 
-  /*
-  $('.fa-cart-plus').hover(function() {
-    console.log('hover');
-    $(this).siblings('.daysOfWeek').show();
-  }, function() {
-    setTimeout(function() {
-      if (!($('.daysOfWeek:hover').length > 0)) {
-        console.log($('.daysOfWeek:hover').length);
-        $('.daysOfWeek').hide('slow');
-      };
-    }, 100);
+    // Search Recipe
+    // get f2f_url
+    // Append meal name between `view/` + `/numbers`
+        // REGEX for finding trailing numbers: (\/[0-9]+)
+    let regex = /\/[0-9]+/g;
+    let tail = url.match(regex);
+    //console.log(url, 'tail: ' + tail);
+
+    // End at URL view/
+    let stop = 'view/';
+    let end = url.indexOf(stop);
+    console.log(end);
+    let full = end + stop.length;
+    console.log(full);
+    let res = url.substring(0, full);
+
+
+    // Replace title spaces w/ _ to build URL
+    title = title.replace(/ /g, "_");
+    let getUrl = res + title + tail;
+
+
+    $( "#grocery-list" ).load( getUrl + " [itemprop=ingredients]" );
+  }
+
+/* Possible Get function to get grocery list
+
+    $(document).ready(function(){
+      $("button").click(function(){
+          $.get("https://food2fork.com/view/Dark_and_Stormy/36227", function(data, status){
+              $('#result').html(data);
+              $('#result').hide();
+
+              $('#list').html($('body').find('[itemprop=ingredients]'));
+
+          });
+      });
   });
 */

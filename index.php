@@ -186,6 +186,8 @@
       </div>
     </div>
 
+    <div id="grocery-list"></div>
+
   </div>
 
   <script src="app.js"></script>
