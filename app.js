@@ -16,7 +16,7 @@
    // This proved to be unecessary
    //food = food.replace(" ", "%20");
 
-   $.ajax({url: "https://food2fork.com/api/search?key=" + API_key + "&q=" + food + "&count=24&sort=r", success: function(result){
+   $.ajax({url: "https://food2fork.com/api/search?key=" + API_key + "&q=" + food + "&count=4&sort=r", success: function(result){
      // Clear div upon new search
      $('.recipe-results').empty();
 
@@ -55,10 +55,35 @@
 
              let f2f_url = recipe.recipes[x].f2f_url;
 
-             getIngredients(f2f_url, title);
+             let regex = /\/[0-9]+/g;
+             let tail = f2f_url.match(regex);
+             //console.log(url, 'tail: ' + tail);
+
+             // End at URL view/
+             let stop = 'view/';
+             let end = f2f_url.indexOf(stop);
+
+             let full = end + stop.length;
+
+             let res = f2f_url.substring(0, full);
+
+
+             // Replace title spaces w/ _ to build URL
+             let grocery_title = title.replace(/ /g, "_");
+             grocery_title.replace('-', '');
+             grocery_title.replace('&', '');
+
+             let grocery_url = res + grocery_title + tail;
+
+
+
+
+
+
+             //getIngredients(f2f_url, title);
              //console.log(foodURL, foodPic, title);
 
-             $('.recipe-results').append('<div class="col-sm-3 group' + groupNumber + '"><div class="recipe-container"><div class="image-container">' + foodPic + '<div class="overlay"><div class="overlay-text">' + title + '</div></div></div></div>' + foodURL + ' <a class="btn btn-info btn-block addRecipe"><i class="fas fa-heart"></i></a><a class="btn btn-info btn-block getList"><i class="fas fa-heart"></i></a></div></div></div>');
+             $('.recipe-results').append('<div class="col-sm-3 group' + groupNumber + '"><div class="recipe-container"><div class="image-container">' + foodPic + '<div class="overlay"><div class="overlay-text">' + title + '</div></div></div></div>' + foodURL + ' <a class="btn btn-danger btn-block addRecipe"  data-grocery-url="' + grocery_url + '" data-title="' + title + '"><i class="fas fa-heart"></i></a></div></div></div>');
            }
 
            changePage();
@@ -68,32 +93,44 @@
 
        // Function to add recipe to database
        $('.addRecipe').click(function(){
+          let $_this = $(this);
+
              let meal_name = $(this).siblings('.recipe-container').find('.overlay-text').text();
              //console.log(meal_name);
              let meal_url = $(this).siblings('a').attr('href');
              //console.log(meal_url);
 
              let meal_pic = $(this).siblings('.recipe-container').find('.image').css('background-image');
-             meal_pic = meal_pic.substring(
-                meal_pic.lastIndexOf('(') + 1,
-                meal_pic.lastIndexOf(')')
-            );
+               meal_pic = meal_pic.substring(
+                  meal_pic.lastIndexOf('(') + 1,
+                  meal_pic.lastIndexOf(')')
+              );
 
-             console.log(meal_pic);
+              let grocery_url = $_this.data('grocery-url');
+
+             console.log(grocery_url);
 
              let parent = $(this).parent();
+
+
+
+
+
 
              $.post("functions.php",
              {
                  meal_name: meal_name,
                  meal_url: meal_url,
-                 meal_pic: meal_pic
+                 meal_pic: meal_pic,
+                 grocery_url: grocery_url
              },
              function(){
                $(parent).append('<p class="confirmation">Added!</p>');
                  //$(this).append(data + "added!");
              });
            });
+
+
 
 
    }});
@@ -306,8 +343,10 @@
           }, 300);
   });
 
+
+
   /* Build function to scrape ingredients */
-  function getIngredients(url, title) {
+  function getIngredients() {
 
     // Search Recipe
     // get f2f_url
@@ -333,6 +372,110 @@
 
     $( "#grocery-list" ).load( getUrl + " [itemprop=ingredients]" );
   }
+
+
+
+
+
+/*
+
+
+  // Begin recipe getting
+  // Build function to scrape ingredients
+  let grocery_list = getGroceries();
+  console.log(grocery_list);
+  function getGroceries() {
+
+    console.log($_this);
+
+    let url = $_this.data('url');
+    let title = $_this.data('title');
+
+    console.log(url, ' + ', title);
+
+
+  //   IS it better to do this server side?
+
+    // Search Recipe
+    // get f2f_url
+    // Append meal name between `view/` + `/numbers`
+        // REGEX for finding trailing numbers: (\/[0-9]+)
+    let regex = /\/[0-9]+/g;
+    let tail = url.match(regex);
+    //console.log(url, 'tail: ' + tail);
+
+    // End at URL view/
+    let stop = 'view/';
+    let end = url.indexOf(stop);
+
+    let full = end + stop.length;
+
+    let res = url.substring(0, full);
+
+
+    // Replace title spaces w/ _ to build URL
+    title = title.replace(/ /g, "_");
+    title.replace('-', '');
+    title.replace('&', '');
+    let getUrl = res + title + tail;
+*/
+    // Gets ingredients using built url
+
+  /*  $.get(getUrl, function(data, status){
+        var x = $.parseHTML(data);
+
+        var y = $(x).find('.about-container ul').html();
+        console.log('grocery-list: ' + y);
+        return y;
+      }); */
+      /*
+      ajaxCall1();
+      function ajaxCall1(){
+        var promises = [];
+        $.ajax({
+          type: "get",
+          url: getUrl,
+          success: function(data) {
+              var x = $.parseHTML(data);
+
+              var y = $(x).find('.about-container ul').html();
+              console.log('grocery-list: ' + y);
+              //ajaxCall2(y);
+              promises.push(y);
+            },
+            error: function() {
+                alert('Error occured');
+            }
+        });
+        console.log('promises: ' + promises);
+        return promises;
+      }
+*/
+/*     function ajaxCall2(list) {
+       console.log('final list: ' + list);
+
+        $.post('groceries.php'
+          {
+            grocery_list: list
+          },
+            function(){
+              $(parent).append('<p class="confirmation">Added!</p>');
+                //$(this).append(data + "added!");
+            });
+        };
+
+      }
+
+*/
+//  };
+
+
+
+
+// End recipe getting
+
+
+
 
 /* Possible Get function to get grocery list
 

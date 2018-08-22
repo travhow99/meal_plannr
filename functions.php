@@ -33,11 +33,12 @@ if (mysqli_connect_errno())
       $meal_name = $_POST['meal_name'];
       $url = $_POST['meal_url'];
       $meal_pic = $_POST['meal_pic'];
+      $grocery_url = $_POST['grocery_url'];
 
-      if (!empty($meal_name) && !empty($url) && !empty($meal_pic)) {
+      if (!empty($meal_name) && !empty($url) && !empty($meal_pic) && !empty($grocery_url)) {
 
         //Insert Query of SQL
-        mysqli_query($conn, "INSERT INTO meals(meal_name, meal_url, meal_pic, user) VALUES ('$meal_name', '$url', '$meal_pic', '$user')");
+        mysqli_query($conn, "INSERT INTO meals(meal_name, meal_url, meal_pic, grocery_url, user) VALUES ('$meal_name', '$url', '$meal_pic', '$grocery_url', '$user')");
 
         echo "Affected rows: " . mysqli_affected_rows($conn);
 
