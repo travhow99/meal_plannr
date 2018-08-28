@@ -26,7 +26,22 @@ body {
                                   supported by Chrome and Opera */
 }
 
+/* error overlay full screen */
+.errorOverlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #1b1a1ab8;
+    z-index: 10;
+    display: none;
+}
 
+.innerText {
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    margin-top: 160px;
+}
 
 /* dashboard design */
 #dashboard {
@@ -57,6 +72,34 @@ body {
 .day {
     display: inline-table;
     width: calc(20% - 4px);
+}
+
+.range {
+    display: inline-block;
+    height: 32px;
+    background: white;
+    color: #828282;
+    padding: 5px;
+}
+
+.displaying {
+  display: inline-block!important;
+}
+
+.prev, .next {
+    background: #d2d2d2;
+    background: linear-gradient(#fdfdfd, #545454);
+    border: none;
+}
+
+.prev {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.next {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .addMeal {
@@ -175,7 +218,7 @@ body {
 .dayMealPlan {
     background: whitesmoke;
     color: grey;
-    height: 80px;
+    height: 186px;
 
     overflow: hidden;
     background-size: cover!important;
@@ -187,7 +230,13 @@ body {
     right: 10px;
 }
 
-
+.missing {
+    box-shadow: 0 0 15px 5px #e01a1a;
+    position: relative;
+    transition: all 0.5s;
+    z-index: 10;
+    opacity: 0.9;
+  }
 
 #favorites .panel {
     max-height: 200px;

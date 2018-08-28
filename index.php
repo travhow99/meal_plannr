@@ -35,11 +35,16 @@
 </head>
 
 <body>
+  <div class="errorOverlay">
+    <div class="innerText">
+      Oops! Looks like you missed a day!
+    </div>
+  </div>
   <div class="container">
     <h1 style='text-align:center;'>mealPlannr</h1>
 
     <!-- tabs !-->
-    <div id="dashboard" class="noselect">
+    <div id="dashboard">
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
         <li><a data-toggle="tab" href="#favorites">Cook Book</a></li>
@@ -54,10 +59,11 @@
         <div id="home" class="tab-pane fade in active">
           <h3>HOME</h3>
           <p class="lead">What's on the menu this week?</p>
-          <div class="calendar">
-
+          <div class="calendar noselect">
+            <!-- php calendar !-->
             <?php
-                echo '<div class="week">Week of '.date('M d', strtotime('last Monday')).' - '.date('M d', strtotime('Friday')).'</div>';
+                include 'functions.php';
+                echo calendar();
             ?>
 
             <div id='monday' class="day">
@@ -66,7 +72,6 @@
               <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i></button>
               <a class="hide-button">hide me</a>
               <?php
-                include 'functions.php';
                 echo favoritesDropdown();
               ?>
             </div>

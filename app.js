@@ -221,26 +221,54 @@
      let $mealName = $(this).text();
      let $calendarImage = $(this).data('url');
      console.log($calendarImage);
-     $(this).closest('.dropdown-container').siblings('.dayMealPlan').after($mealName);
+     $(this).closest('.dropdown-container').siblings('.dayMealPlan').after('<span class="meal-name">' + $mealName + '</span>');
      $(this).closest('.dropdown-container').siblings('.dayMealPlan').css('background', 'url(' + $calendarImage + ')');
+     $(this).closest('.dropdown-container').siblings('.dayMealPlan').html('');
      $(".favoritesDropdown").hide();
  });
 
  // Post current calendar selections to DB
  $('.submitCalendar').click(function(){
-   let monday = $('#monday .dayMealPlan').text();
-   let tuesday = $('#tuesday .dayMealPlan').text();
-   let wednesday = $('#wednesday .dayMealPlan').text();
-   let thursday = $('#thursday .dayMealPlan').text();
-   let friday = $('#friday .dayMealPlan').text();
-   let weekdays = {Monday: monday, Tuesday: tuesday, Wednesday: wednesday, Thursday: thursday, Friday: friday};
 
+   // Need Date Range (week)
+
+
+
+
+   let fullCalendar = true;
+   // Check for unchanged
+   $('.dayMealPlan').each(function(index, item) {
+     console.log(item);
+      if ($(item).text() === 'Click to add a favorite meal below!') {
+        let $_this = $(this);
+
+        $(this).addClass('missing');
+        $('.errorOverlay').show();
+
+        setTimeout(function () {
+            $_this.removeClass('missing');
+            $('.errorOverlay').fadeOut();
+        }, 1500);
+        return false;
+      }
+
+    });
+
+
+
+   let monday = $('#monday .meal-name').text();
+   let tuesday = $('#tuesday .meal-name').text();
+   let wednesday = $('#wednesday .meal-name').text();
+   let thursday = $('#thursday .meal-name').text();
+   let friday = $('#friday .meal-name').text();
+   let weekdays = {Monday: monday, Tuesday: tuesday, Wednesday: wednesday, Thursday: thursday, Friday: friday};
+/*
    for (let newMeal in weekdays) {
      if (weekdays[newMeal] === 'Click to add a favorite meal below!'){
        alert('Please select a meal for ' + newMeal);
        break;
      }
-   }
+   } */
 
    //weekdays.push(monday, tuesday, wednesday, thursday, friday);
 /*
@@ -263,6 +291,7 @@
    function(data, status){
      console.log(data);
    });
+
  });
 
  // Function to add recipe to database
@@ -373,6 +402,65 @@
     $( "#grocery-list" ).load( getUrl + " [itemprop=ingredients]" );
   }
 
+
+// Function to loop through calendar week date ranges
+  $('.weeklyCalendar .btn').click(function(){
+    let weekRanges = [];
+
+    // Loop through all of .range
+    $('.range').each(function(index, item) {
+      weekRanges.push($(this).data('week-number'));
+
+    });
+    //console.log(weekRanges);
+
+    let weekNumber = $('.displaying').data('week-number');
+    console.log('week#: ' + weekNumber);
+    let current = weekRanges.indexOf(weekNumber);
+
+
+    if ($(this).hasClass('prev')) {
+
+      if (current >= 1) {
+        if (current === 1) {
+          $('.prev').addClass('disabled');
+        } else {
+          $('next').removeClass('disabled');
+          $('prev').removeClass('disabled');
+        }
+      } else return;
+
+      $('.range:eq(' + current + ')').removeClass('displaying');
+      current -= 1;
+
+      let newCurrent = weekRanges[current];
+      console.log('new current: ' + newCurrent);
+      $('.range:eq(' + current + ')').addClass('displaying');
+
+
+    } else if ($(this).hasClass('next')) {
+
+      if (current <= 1) {
+        if (current === 1) {
+          $('.next').addClass('disabled');
+        } else {
+          $('prev').removeClass('disabled');
+          $('next').removeClass('disabled');
+
+        }
+      } else return;
+
+
+      $('.range:eq(' + current + ')').removeClass('displaying');
+        current += 1;
+        let newCurrent = weekRanges[current];
+        console.log(newCurrent);
+        $('.range:eq(' + current + ')').addClass('displaying');
+
+        //  weekRanges.indexOf(current).show();
+
+        }
+  });
 
 
 

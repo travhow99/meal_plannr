@@ -102,6 +102,30 @@ function get_username() {
 
 }
 
+function calendar() {
+  $monday = date( 'M d', strtotime( 'monday this week' ) );
+  $friday = date( 'M d', strtotime( 'friday this week' ) );
+  $thisWeek = date('W');
+
+  $nextMonday = date( 'M d', strtotime( 'monday next week' ) );
+  $nextFriday = date( 'M d', strtotime( 'friday next week' ) );
+  $nextWeek = date('W') + 1;
+
+  $lastMonday = date( 'M d', strtotime( 'monday last week' ) );
+  $lastFriday = date( 'M d', strtotime( 'friday last week' ) );
+  $lastWeek = date('W') - 1;
+
+  $scrollingDiv = "<div class='weeklyCalendar'><div class='btn prev'><</div>
+                    <div class='range' data-week-number='$lastWeek' style='display:none;'>$lastMonday - $lastFriday</div>
+                    <div class='range displaying' data-week-number='$thisWeek' style='display:none;'>$monday - $friday</div>
+                    <div class='range' data-week-number='$nextWeek' style='display:none;'>$nextMonday - $nextFriday</div>
+                  <div class='btn next'>></div></div>";
+
+
+  echo $scrollingDiv;
+
+}
+
 
 
 mysqli_close($conn);
