@@ -69,8 +69,8 @@
             <div id='monday' class="day">
               <span>Monday</span><br>
               <div class="dayMealPlan">Click to add a favorite meal below!</div>
+              <span class="meal-name"></span>
               <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i></button>
-              <a class="hide-button">hide me</a>
               <?php
                 echo favoritesDropdown();
               ?>
@@ -78,8 +78,8 @@
             <div id="tuesday" class="day">
               <span>Tuesday</span><br>
               <div class="dayMealPlan">Click to add a favorite meal below!</div>
+              <span class="meal-name"></span>
               <button class="addMeal btn btn-success" id="addTuesday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
-              <a class="hide-button">hide me</a>
               <?php
                 echo favoritesDropdown();
               ?>
@@ -87,8 +87,8 @@
             <div id="wednesday" class="day">
               <span>Wednesday</span><br>
               <div class="dayMealPlan">Click to add a favorite meal below!</div>
+              <span class="meal-name"></span>
               <button class="addMeal btn btn-success" id="addWednesday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
-              <a class="hide-button">hide me</a>
               <?php
                 echo favoritesDropdown();
               ?>
@@ -96,8 +96,8 @@
             <div id="thursday" class="day">
               <span>Thursday</span><br>
               <div class="dayMealPlan">Click to add a favorite meal below!</div>
+              <span class="meal-name"></span>
               <button class="addMeal btn btn-success" id="addThursday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
-              <a class="hide-button">hide me</a>
               <?php
                 echo favoritesDropdown();
               ?>
@@ -105,8 +105,8 @@
             <div id="friday" class="day">
               <span>Friday</span><br>
               <div class="dayMealPlan">Click to add a favorite meal below!</div>
+              <span class="meal-name"></span>
               <button class="addMeal btn btn-success" id="addFriday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
-              <a class="hide-button">hide me</a>
               <?php
                 echo favoritesDropdown();
               ?>

@@ -221,7 +221,7 @@
      let $mealName = $(this).text();
      let $calendarImage = $(this).data('url');
      console.log($calendarImage);
-     $(this).closest('.dropdown-container').siblings('.dayMealPlan').after('<span class="meal-name">' + $mealName + '</span>');
+     $(this).closest('.dropdown-container').siblings('.meal-name').html($mealName);
      $(this).closest('.dropdown-container').siblings('.dayMealPlan').css('background', 'url(' + $calendarImage + ')');
      $(this).closest('.dropdown-container').siblings('.dayMealPlan').html('');
      $(".favoritesDropdown").hide();
@@ -252,7 +252,7 @@
 
     });
 
-     let weekNumber = $('.displaying').data('week-number');      
+     let weekNumber = $('.displaying').data('week-number');
      let monday = $('#monday .meal-name').text();
      let tuesday = $('#tuesday .meal-name').text();
      let wednesday = $('#wednesday .meal-name').text();
