@@ -230,10 +230,8 @@
  // Post current calendar selections to DB
  $('.submitCalendar').click(function(){
 
+
    // Need Date Range (week)
-
-
-
 
    let fullCalendar = true;
    // Check for unchanged
@@ -254,34 +252,17 @@
 
     });
 
+     let weekNumber = $('.displaying').data('week-number');      
+     let monday = $('#monday .meal-name').text();
+     let tuesday = $('#tuesday .meal-name').text();
+     let wednesday = $('#wednesday .meal-name').text();
+     let thursday = $('#thursday .meal-name').text();
+     let friday = $('#friday .meal-name').text();
+     let weekdays = {Monday: monday, Tuesday: tuesday, Wednesday: wednesday, Thursday: thursday, Friday: friday};
 
-
-   let monday = $('#monday .meal-name').text();
-   let tuesday = $('#tuesday .meal-name').text();
-   let wednesday = $('#wednesday .meal-name').text();
-   let thursday = $('#thursday .meal-name').text();
-   let friday = $('#friday .meal-name').text();
-   let weekdays = {Monday: monday, Tuesday: tuesday, Wednesday: wednesday, Thursday: thursday, Friday: friday};
-/*
-   for (let newMeal in weekdays) {
-     if (weekdays[newMeal] === 'Click to add a favorite meal below!'){
-       alert('Please select a meal for ' + newMeal);
-       break;
-     }
-   } */
-
-   //weekdays.push(monday, tuesday, wednesday, thursday, friday);
-/*
-   for (let x = 0; x < weekdays.length; x++) {
-     if (weekdays[x] === 'Click to add a favorite meal below!'){
-       alert('Please select ');
-       break;
-     }
-   }
-*/
-   //console.log(monday, tuesday);
    $.post("forms.php",
    {
+     week: weekNumber,
      mon: monday,
      tue: tuesday,
      wed: wednesday,
@@ -424,9 +405,10 @@
       if (current >= 1) {
         if (current === 1) {
           $('.prev').addClass('disabled');
+          $('.next').removeClass('disabled');
         } else {
-          $('next').removeClass('disabled');
-          $('prev').removeClass('disabled');
+          $('.next').removeClass('disabled');
+          $('.prev').removeClass('disabled');
         }
       } else return;
 
@@ -443,9 +425,10 @@
       if (current <= 1) {
         if (current === 1) {
           $('.next').addClass('disabled');
+          $('.prev').removeClass('disabled');
         } else {
-          $('prev').removeClass('disabled');
-          $('next').removeClass('disabled');
+          $('.prev').removeClass('disabled');
+          $('.next').removeClass('disabled');
 
         }
       } else return;
