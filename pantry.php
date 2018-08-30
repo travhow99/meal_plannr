@@ -47,7 +47,7 @@ include('config.php');
 
 
     if (!empty($itemName) && !empty($timeLine)) {
-      echo "adding " . $itemName . " and " . $timeLine;
+      echo "adding $itemName and $timeLine";
 
       mysqli_query($conn, "INSERT INTO pantry(itemName, timeLine) VALUES ('$itemName', '$timeLine')");
       echo "Affected rows: " . mysqli_affected_rows($conn);

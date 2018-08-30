@@ -91,7 +91,7 @@ function favoritesDropdown() {
 
   echo "<div class='dropdown-container'><div class='favoritesDropdown'><span>Eating Out</span>";
     while ($row = mysqli_fetch_array($sql)){
-      echo "<span data-url=" . $row['meal_pic'] . ">" . $row['meal_name'] . "</span>";
+      echo "<span data-id=".$row['ID']." data-url=" . $row['meal_pic'] . ">" . $row['meal_name'] . "</span>";
     };
   echo "</div></div>";
 
@@ -103,6 +103,7 @@ function get_username() {
 }
 
 function calendar() {
+
   $monday = date( 'M d', strtotime( 'monday this week' ) );
   $friday = date( 'M d', strtotime( 'friday this week' ) );
   $thisWeek = date('W');
@@ -121,9 +122,23 @@ function calendar() {
                     <div class='range' data-week-number='$nextWeek' style='display:none;'>$nextMonday - $nextFriday</div>
                   <div class='btn next'>></div></div>";
 
-
   echo $scrollingDiv;
 
+  $host = "localhost";
+  $userName = "root";
+  $password = "root";
+  $dbName = "meal_plannr";
+
+  $conn = mysqli_connect($host, $userName, $password, $dbName);
+
+  $sql = mysqli_query($conn, "SELECT * FROM meal_calendar WHERE week_number=$thisWeek OR week_number=$lastWeek OR week_number=$nextWeek");
+
+  // echo "Affected rows: " . mysqli_affected_rows($conn);
+/*
+  while ($row = mysqli_fetch_array($sql)){
+    print_r($row);
+  }
+*/
 }
 
 

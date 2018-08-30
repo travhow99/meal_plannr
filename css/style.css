@@ -190,6 +190,8 @@ body {
     color:black;
 }
 
+.meal-id {display: none;}
+
 .hide-button {
     display: none;
     float: right;

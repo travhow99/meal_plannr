@@ -16,7 +16,7 @@
    // This proved to be unecessary
    //food = food.replace(" ", "%20");
 
-   $.ajax({url: "https://food2fork.com/api/search?key=" + API_key + "&q=" + food + "&count=4&sort=r", success: function(result){
+   $.ajax({url: "https://food2fork.com/api/search?key=" + API_key + "&q=" + food + "&count=24&sort=r", success: function(result){
      // Clear div upon new search
      $('.recipe-results').empty();
 
@@ -212,16 +212,13 @@
       $(".favoritesDropdown").hide();
   });
 
- $('.hide-button').click(function(){
-   $('.favoritesDropdown').hide();
-   $(this).hide();
- });
-
  $('.favoritesDropdown>span').click(function(){
      let $mealName = $(this).text();
      let $calendarImage = $(this).data('url');
-     console.log($calendarImage);
+     let $mealID = $(this).data('id');
+     console.log($mealID);
      $(this).closest('.dropdown-container').siblings('.meal-name').html($mealName);
+     $(this).closest('.dropdown-container').siblings('.meal-id').html($mealID);
      $(this).closest('.dropdown-container').siblings('.dayMealPlan').css('background', 'url(' + $calendarImage + ')');
      $(this).closest('.dropdown-container').siblings('.dayMealPlan').html('');
      $(".favoritesDropdown").hide();
@@ -259,6 +256,10 @@
      let thursday = $('#thursday .meal-name').text();
      let friday = $('#friday .meal-name').text();
      let weekdays = {Monday: monday, Tuesday: tuesday, Wednesday: wednesday, Thursday: thursday, Friday: friday};
+
+     // Gather meal IDs
+     // each loop through .meal-id
+
 
    $.post("forms.php",
    {

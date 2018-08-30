@@ -70,6 +70,7 @@
               <span>Monday</span><br>
               <div class="dayMealPlan">Click to add a favorite meal below!</div>
               <span class="meal-name"></span>
+              <span class="meal-id"></span>
               <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i></button>
               <?php
                 echo favoritesDropdown();
