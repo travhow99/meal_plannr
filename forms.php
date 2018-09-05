@@ -1,9 +1,30 @@
 <?php
    include('config.php');
+   $thisWeek = date('W');
+   $nextWeek = date('W') + 1;
+
+   $lastWeek = date('W') - 1;
+
 
    // Need to Join with 'meals' table to reference ID# of Meal
+   $sql = mysqli_query($conn,"SELECT * FROM meal_calendar WHERE week_number=$thisWeek OR week_number=$lastWeek OR week_number=$nextWeek ORDER BY week_number");
 
-   
+   $types = array();
+
+
+
+  while($row =  mysqli_fetch_array($sql)) {
+      $types[] = $row;
+      if ($row['week_number'] == $thisWeek) {
+        echo $row['mon_din'];
+      }
+  }
+
+
+
+
+
+
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
      //echo 'posted '.$_POST['mon'].' and '.$_POST['tue'];

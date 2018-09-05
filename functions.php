@@ -131,14 +131,12 @@ function calendar() {
 
   $conn = mysqli_connect($host, $userName, $password, $dbName);
 
-  $sql = mysqli_query($conn, "SELECT * FROM meal_calendar WHERE week_number=$thisWeek OR week_number=$lastWeek OR week_number=$nextWeek");
+  $sql = mysqli_query($conn, "SELECT * FROM meal_calendar WHERE week_number=$thisWeek");
 
-  // echo "Affected rows: " . mysqli_affected_rows($conn);
-/*
   while ($row = mysqli_fetch_array($sql)){
-    print_r($row);
+    //print_r($row);
   }
-*/
+
 }
 
 

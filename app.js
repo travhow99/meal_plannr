@@ -250,11 +250,11 @@
     });
 
      let weekNumber = $('.displaying').data('week-number');
-     let monday = $('#monday .meal-name').text();
-     let tuesday = $('#tuesday .meal-name').text();
-     let wednesday = $('#wednesday .meal-name').text();
-     let thursday = $('#thursday .meal-name').text();
-     let friday = $('#friday .meal-name').text();
+     let monday = $('#monday .meal-id').text();
+     let tuesday = $('#tuesday .meal-id').text();
+     let wednesday = $('#wednesday .meal-id').text();
+     let thursday = $('#thursday .meal-id').text();
+     let friday = $('#friday .meal-id').text();
      let weekdays = {Monday: monday, Tuesday: tuesday, Wednesday: wednesday, Thursday: thursday, Friday: friday};
 
      // Gather meal IDs
