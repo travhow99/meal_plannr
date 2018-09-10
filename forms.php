@@ -1,8 +1,9 @@
 <?php
+   include('session.php');
    include('config.php');
+
    $thisWeek = date('W');
    $nextWeek = date('W') + 1;
-
    $lastWeek = date('W') - 1;
 
 
@@ -11,20 +12,22 @@
 
    $types = array();
 
+   //$sqlJoin = mysqli_query($conn,"SELECT meal_calendar.*, meals.meal_name, meals.meal_pic FROM meal_calendar LEFT JOIN meals ON ")
+   $sqlSelect = mysqli_query($conn, "SELECT meal_calendar.*, meals.meal_name, meals.meal_pic FROM meal_calendar A
+     INNER JOIN meals ON meal_calendar.mon_din=meals.id)");
 
+   $sqlNew = mysqli_query($conn, "SELECT * from calendar");
 
-  while($row =  mysqli_fetch_array($sql)) {
+  while ($row =  mysqli_fetch_array($sqlNew)) {
       $types[] = $row;
-      if ($row['week_number'] == $thisWeek) {
-        echo $row['mon_din'];
-      }
+      //print_r($row['day']);
+
   }
 
+ /* individual sql queries to set mealCalendar if already exists */
 
-
-
-
-
+ // Check DB for entry this day, this week, and this user
+    //
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
      //echo 'posted '.$_POST['mon'].' and '.$_POST['tue'];

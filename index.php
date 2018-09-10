@@ -40,6 +40,11 @@
       Oops! Looks like you missed a day!
     </div>
   </div>
+  <div class="submitOverlay">
+    <div class="innerText">
+      Meal saved!
+    </div>
+  </div>
   <div class="container">
     <h1 style='text-align:center;'>mealPlannr</h1>
 
@@ -69,29 +74,75 @@
 
             <div id='monday' class="noselect day">
               <span>Monday</span><br>
-              <?php if (isset($types['mon_din'])){
-                echo 'yes';
-                //print_r($types);
-              }
-              ?>
-              <div class="dayMealPlan">Click to add a favorite meal below!</div>
-              <span class="meal-name"></span>
-              <span class="meal-id"></span>
-              <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i></button>
-              <?php
-                echo favoritesDropdown();
-              ?>
+              <?php /* individual sql queries to set mealCalendar if already exists */
+              include 'config.php';
+
+              $sqlT = 'SELECT * FROM calendar';
+              $mon = [];
+
+              $result = mysqli_query($conn, $sqlT);
+              while($row = mysqli_fetch_assoc($result)) {
+                if ($row['day'] == 'Monday' && $row['week_number'] == ($thisWeek) && $row['saved_by'] == $login_session) {
+
+
+                      $sql = 'SELECT calendar.meal_id, calendar.day, calendar.week_number, meals.ID, meals.meal_name, meals.meal_pic FROM calendar INNER JOIN meals ON calendar.meal_id = meals.id WHERE calendar.day="Monday"';
+                      $result = mysqli_query($conn, $sql);
+                      while ($row = mysqli_fetch_assoc($result)){
+                        array_push($mon, $row);
+                      }
+                    }
+                  }
+
+                  if (!empty($mon)){
+                    $mealpic = $mon[0][meal_pic];
+                    $mealname = $mon[0][meal_name];
+                    echo "<div class='dayMealPlan m' style='background-image:url($mealpic)'>$mealname</div>";
+                  } else { ?>
+                    <div class="dayMealPlan">Click to add a favorite meal below!</div>
+                    <span class="meal-name"></span>
+                    <span class="meal-id"></span>
+                    <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i></button>
+                    <?php favoritesDropdown(); ?>
+                  <?php }
+                    ?>
+
             </div>
-            <div id="tuesday" class="noselect day">
+
+            <div id='tuesday' class="noselect day">
               <span>Tuesday</span><br>
-              <div class="dayMealPlan">Click to add a favorite meal below!</div>
-              <span class="meal-name"></span>
-              <span class="meal-id"></span>
-              <button class="addMeal btn btn-success" id="addTuesday"><i class="fas fa-chevron-circle-down"></i> Add Meal</button>
-              <?php
-                echo favoritesDropdown();
-              ?>
+              <?php /* individual sql queries to set mealCalendar if already exists */
+              $sqlT = 'SELECT * FROM calendar';
+              $tues = [];
+
+              $result = mysqli_query($conn, $sqlT);
+              while($row = mysqli_fetch_assoc($result)) {
+                if ($row['day'] == 'Tuesday' && $row['week_number'] == ($thisWeek) && $row['saved_by'] == $login_session) {
+
+
+                      $sql = 'SELECT calendar.meal_id, calendar.day, calendar.week_number, meals.ID, meals.meal_name, meals.meal_pic FROM calendar INNER JOIN meals ON calendar.meal_id = meals.id WHERE calendar.day="Tuesday"';
+                      $result = mysqli_query($conn, $sql);
+                      while ($row = mysqli_fetch_assoc($result)){
+                        array_push($tues, $row);
+                      }
+                    }
+                  }
+
+                  if (!empty($tues)){
+                    $mealpic = $tues[0][meal_pic];
+                    $mealname = $tues[0][meal_name];
+                    echo "<div class='dayMealPlan' style='background-image:url($mealpic)'>$mealname</div>";
+                  } else { ?>
+                    <div class="dayMealPlan">Click to add a favorite meal below!</div>
+                    <span class="meal-name"></span>
+                    <span class="meal-id"></span>
+                    <button class="addMeal btn btn-success" id="addTuesday"><i class="fas fa-plus-circle"></i></button>
+                    <?php favoritesDropdown(); ?>
+                  <?php }
+                    ?>
+
             </div>
+
+
             <div id="wednesday" class="noselect day">
               <span>Wednesday</span><br>
               <div class="dayMealPlan">Click to add a favorite meal below!</div>

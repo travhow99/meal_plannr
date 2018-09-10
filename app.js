@@ -226,6 +226,7 @@
 
  // Post current calendar selections to DB
  $('.submitCalendar').click(function(){
+   console.log($('.calendar').serialize());
 
 
    // Need Date Range (week)
@@ -272,6 +273,12 @@
    },
    function(data, status){
      console.log(data);
+     $('.submitOverlay').show();
+
+     setTimeout(function () {
+         $('.submitOverlay').fadeOut();
+     }, 1500);
+     return false;
    });
 
  });
