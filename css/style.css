@@ -72,6 +72,7 @@ body {
 .day {
     display: inline-table;
     width: calc(20% - 4px);
+    margin: 2px;
 }
 
 .range {
@@ -188,6 +189,9 @@ body {
     border-radius: 0 0 5px 5px;
     display: none;
     color:black;
+    overflow-x: auto;
+    position: relative;
+    z-index: 1;
 }
 
 .meal-id {display: none;}
