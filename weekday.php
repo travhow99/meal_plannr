@@ -5,10 +5,14 @@ include 'config.php';
 $weekdays = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday");
 
 $thisWeek = date('W');
+$lastWeek = date('W') - 1;
+$nextWeek = date('W') + 1;
+
+$weeks = array($lastWeek, $thisWeek, $nextWeek);
 
 
 
-
+foreach ($weeks as $week){
 // Loop through each day of week
 foreach ($weekdays as $weekday) {
   if (!$conn)
@@ -32,7 +36,7 @@ foreach ($weekdays as $weekday) {
 
   while($row = mysqli_fetch_assoc($result)) {
     // Check if entry matches for the day
-    if ($row['day'] == $weekday && $row['week_number'] == ($thisWeek) && $row['saved_by'] == $login_session) {
+    if ($row['day'] == $weekday && $row['week_number'] == ($week) && $row['saved_by'] == $login_session) {
       // if there is a result from this day, week, & user
       // Build query
       $sqlZ = "SELECT calendar.meal_id, calendar.day, calendar.week_number, meals.ID, meals.meal_name, meals.meal_pic FROM calendar INNER JOIN meals ON calendar.meal_id = meals.id WHERE calendar.day='$weekday'";
@@ -61,5 +65,6 @@ foreach ($weekdays as $weekday) {
   }
   echo '</div>';
 
+}
 }
 ?>

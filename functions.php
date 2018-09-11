@@ -124,18 +124,6 @@ function calendar() {
 
   echo $scrollingDiv;
 
-  $host = "localhost";
-  $userName = "root";
-  $password = "root";
-  $dbName = "meal_plannr";
-
-  $conn = mysqli_connect($host, $userName, $password, $dbName);
-
-  $sql = mysqli_query($conn, "SELECT * FROM meal_calendar WHERE week_number=$thisWeek");
-
-  while ($row = mysqli_fetch_array($sql)){
-    //print_r($row);
-  }
 
 }
 
