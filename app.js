@@ -426,6 +426,8 @@
       let newCurrent = weekRanges[current];
       console.log('new current: ' + newCurrent);
       $('.range:eq(' + current + ')').addClass('displaying');
+      $('.meal-row').removeClass('displaying');
+      $('.meal-row-'+newCurrent).addClass('displaying');
 
 
     } else if ($(this).hasClass('next')) {
@@ -448,10 +450,19 @@
         console.log(newCurrent);
         $('.range:eq(' + current + ')').addClass('displaying');
 
+        $('.meal-row').removeClass('displaying');
+        $('.meal-row-'+newCurrent).addClass('displaying');
+
         //  weekRanges.indexOf(current).show();
 
         }
   });
+
+  // Hide non-selected .week-row
+  function properWeeks() {
+    $('.meal-row:eq(1)').addClass('displaying');
+  };
+  properWeeks();
 
 
 

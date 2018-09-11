@@ -13,6 +13,8 @@ $weeks = array($lastWeek, $thisWeek, $nextWeek);
 
 
 foreach ($weeks as $week){
+  echo '<div class="meal-row meal-row-'.$week.'">';
+
 // Loop through each day of week
 foreach ($weekdays as $weekday) {
   if (!$conn)
@@ -52,19 +54,22 @@ foreach ($weekdays as $weekday) {
 
   }
 
-  if (!empty($entry)){
-    $mealpic = $entry[0]['meal_pic'];
-    $mealname = $entry[0]['meal_name'];
-    echo "<div class='dayMealPlan' style='background-image:url($mealpic)'>$mealname</div>";
-  } else {
-    echo '<div class="dayMealPlan">Click to add a favorite meal below!</div>
-    <span class="meal-name"></span>
-    <span class="meal-id"></span>
-    <button class="addMeal btn btn-success" id="addFriday"><i class="fas fa-plus-circle"></i></button>';
-    echo favoritesDropdown();
+
+    if (!empty($entry)){
+      $mealpic = $entry[0]['meal_pic'];
+      $mealname = $entry[0]['meal_name'];
+      echo "<div class='dayMealPlan' style='background-image:url($mealpic)'>$mealname</div>";
+    } else {
+      echo '<div class="dayMealPlan">Click to add a favorite meal below!</div>
+      <span class="meal-name"></span>
+      <span class="meal-id"></span>
+      <button class="addMeal btn btn-success" id="addFriday"><i class="fas fa-plus-circle"></i></button>';
+      echo favoritesDropdown();
+    }
+    echo '</div>';
+
   }
   echo '</div>';
 
-}
 }
 ?>

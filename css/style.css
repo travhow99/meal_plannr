@@ -69,6 +69,10 @@ body {
     color: #f9c943;
 }
 
+.meal-row {
+  display: none;
+}
+
 .day {
     display: inline-table;
     width: calc(20% - 4px);
