@@ -31,6 +31,7 @@
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
      //echo 'posted '.$_POST['mon'].' and '.$_POST['tue'];
+//  if (empty($_POST[$field])) {
 
      $week = $_POST['week'];
      $monday = $_POST['mon'];
@@ -39,9 +40,18 @@
      $thursday = $_POST['thu'];
      $friday = $_POST['fri'];
 
-     mysqli_query($conn, "INSERT INTO meal_calendar(week_number, mon_din, tue_din, wed_din, thu_din, fri_din) VALUES ('$week', '$monday', '$tuesday', '$wednesday', '$thursday', '$friday')");
+     // Array of sql entries
+     $entries = array("Monday"=>$monday, "Tuesday"=>$tuesday, "Wednesday"=>$wednesday, "Thursday"=>$thursday, "Friday"=>$friday);
 
-        echo "Affected rows: " . mysqli_affected_rows($conn);
+     //Loop throuh $entries to perform sql query if not empty
+     foreach ($entries as $entry => $value) {
+       // IF $entry not empty
+       if (!empty($entry)) {
+         mysqli_query($conn, "INSERT INTO calendar(week_number, day, meal_id, saved_by) VALUES ('$week', '$entry', '$value', '$login_session')");
+       }
+       echo "Affected rows: " . mysqli_affected_rows($conn);
+
+     }
 
 
    }

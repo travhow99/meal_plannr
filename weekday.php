@@ -1,5 +1,6 @@
 <?php
 include 'config.php';
+include('session.php');
 
 
 $weekdays = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday");
@@ -41,7 +42,7 @@ foreach ($weekdays as $weekday) {
     if ($row['day'] == $weekday && $row['week_number'] == ($week) && $row['saved_by'] == $login_session) {
       // if there is a result from this day, week, & user
       // Build query
-      $sqlZ = "SELECT calendar.meal_id, calendar.day, calendar.week_number, meals.ID, meals.meal_name, meals.meal_pic FROM calendar INNER JOIN meals ON calendar.meal_id = meals.id WHERE calendar.day='$weekday'";
+      $sqlZ = "SELECT calendar.meal_id, calendar.day, calendar.week_number, calendar.saved_by, meals.ID, meals.meal_name, meals.meal_pic FROM calendar INNER JOIN meals ON calendar.meal_id = meals.id WHERE calendar.day='$weekday' AND calendar.saved_by='$login_session'";
 
       $query = mysqli_query($conn, $sqlZ);
 
