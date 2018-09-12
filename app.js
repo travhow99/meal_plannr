@@ -226,7 +226,6 @@
 
  // Post current calendar selections to DB
  $('.submitCalendar').click(function(){
-   console.log($('.calendar').serialize());
 
 
    // Need Date Range (week)
@@ -245,10 +244,12 @@
             $_this.removeClass('missing');
             $('.errorOverlay').fadeOut();
         }, 1500);
-        return false;
+        fullCalendar = false;
       }
 
     });
+
+    if (fullCalendar===false){return;}
 
      let weekNumber = $('.displaying').data('week-number');
      let monday = $('#monday .meal-id').text();
