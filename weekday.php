@@ -39,10 +39,10 @@ foreach ($weekdays as $weekday) {
 
   while($row = mysqli_fetch_assoc($result)) {
     // Check if entry matches for the day
-    if ($row['day'] == $weekday && $row['week_number'] == ($week) && $row['saved_by'] == $login_session) {
+    if ($row['day'] == $weekday && $row['week_number'] == $week && $row['saved_by'] == $login_session) {
       // if there is a result from this day, week, & user
       // Build query
-      $sqlZ = "SELECT calendar.meal_id, calendar.day, calendar.week_number, calendar.saved_by, meals.ID, meals.meal_name, meals.meal_pic FROM calendar INNER JOIN meals ON calendar.meal_id = meals.id WHERE calendar.day='$weekday' AND calendar.saved_by='$login_session'";
+      $sqlZ = "SELECT calendar.meal_id, calendar.day, calendar.week_number, calendar.saved_by, meals.ID, meals.meal_name, meals.meal_pic FROM calendar INNER JOIN meals ON calendar.meal_id = meals.id WHERE calendar.day='$weekday' AND calendar.saved_by='$login_session' AND calendar.week_number='$week'";
 
       $query = mysqli_query($conn, $sqlZ);
 
@@ -55,6 +55,8 @@ foreach ($weekdays as $weekday) {
 
   }
 
+//  print_r($entry);
+
 
     if (!empty($entry)){
       $mealpic = $entry[0]['meal_pic'];
@@ -64,7 +66,7 @@ foreach ($weekdays as $weekday) {
       echo '<div class="dayMealPlan">Click to add a favorite meal below!</div>
       <span class="meal-name"></span>
       <span class="meal-id"></span>
-      <button class="addMeal btn btn-success" id="addFriday"><i class="fas fa-plus-circle"></i></button>';
+      <button class="addMeal btn btn-success"><i class="fas fa-plus-circle"></i></button>';
       echo favoritesDropdown();
     }
     echo '</div>';

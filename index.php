@@ -41,7 +41,7 @@
     </div>
   </div>
   <div class="submitOverlay">
-    <div class="innerText">
+    <div class="innerText2">
       Meal saved!
     </div>
   </div>
