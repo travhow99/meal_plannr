@@ -1,6 +1,11 @@
 <?php
    include("config.php");
    session_start();
+   if(isset($_SESSION['login_user'])){
+      header("location:index.php");
+   }
+
+   session_start();
 
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form

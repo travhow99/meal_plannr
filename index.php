@@ -35,11 +35,21 @@
 </head>
 
 <body>
+  <div class="errorOverlay">
+    <div class="innerText">
+      Oops! Looks like you missed a day!
+    </div>
+  </div>
+  <div class="submitOverlay">
+    <div class="innerText2">
+      Meal saved!
+    </div>
+  </div>
   <div class="container">
     <h1 style='text-align:center;'>mealPlannr</h1>
 
     <!-- tabs !-->
-    <div id="dashboard" class="container">
+    <div id="dashboard">
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
         <li><a data-toggle="tab" href="#favorites">Cook Book</a></li>
@@ -53,35 +63,24 @@
       <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
           <h3>HOME</h3>
-          <h5>What's on the menu this week?</h5>
+          <p class="lead">What's on the menu this week?</p>
           <div class="calendar">
-            <div class="day">
-              <span>Monday</span>
-              <button class="addMeal btn btn-success" id="addMonday"><i class="fas fa-plus-circle"></i> Add Meal</button>
-            </div>
-            <div class="day">
-              <span>Tuesday</span>
-              <button class="addMeal btn btn-success" id="addTuesday"><i class="fas fa-plus-circle"></i> Add Meal</button>
-            </div>
-            <div class="day">
-              <span>Wednesday</span>
-              <button class="addMeal btn btn-success" id="addWednesday"><i class="fas fa-plus-circle"></i> Add Meal</button>
-            </div>
-            <div class="day">
-              <span>Thursday</span>
-              <button class="addMeal btn btn-success" id="addThursday"><i class="fas fa-plus-circle"></i> Add Meal</button>
-            </div>
-            <div class="day">
-              <span>Friday</span>
-              <button class="addMeal btn btn-success" id="addFriday"><i class="fas fa-plus-circle"></i> Add Meal</button>
-            </div>
+            <!-- php calendar !-->
+            <?php
+                include 'functions.php';
+                include 'forms.php';
+                echo calendar();
+                include 'weekday.php';
+            ?>
+
+            <button class="submitCalendar btn btn-default" type="submit">Save Calendar</button>
           </div>
         </div>
         <div id="favorites" class="tab-pane fade">
           <h3>Cook Book</h3>
           <div id="favorites">
             <?php
-                require 'functions.php';
+                //require 'functions.php';
                 echo showFavorites();
             ?>
           </div>
@@ -151,6 +150,8 @@
         </div>
       </div>
     </div>
+
+    <div id="grocery-list"></div>
 
   </div>
 

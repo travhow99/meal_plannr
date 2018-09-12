@@ -52,9 +52,38 @@
              let foodPic = "<div style='background-image:url(" + recipe.recipes[x].image_url + ")' class='image ' ></div>";
 
              let title = recipe.recipes[x].title;
+
+             let f2f_url = recipe.recipes[x].f2f_url;
+
+             let regex = /\/[0-9]+/g;
+             let tail = f2f_url.match(regex);
+             //console.log(url, 'tail: ' + tail);
+
+             // End at URL view/
+             let stop = 'view/';
+             let end = f2f_url.indexOf(stop);
+
+             let full = end + stop.length;
+
+             let res = f2f_url.substring(0, full);
+
+
+             // Replace title spaces w/ _ to build URL
+             let grocery_title = title.replace(/ /g, "_");
+             grocery_title.replace('-', '');
+             grocery_title.replace('&', '');
+
+             let grocery_url = res + grocery_title + tail;
+
+
+
+
+
+
+             //getIngredients(f2f_url, title);
              //console.log(foodURL, foodPic, title);
 
-             $('.recipe-results').append('<div class="col-sm-3 group' + groupNumber + '"><div class="recipe-container"><div class="image-container">' + foodPic + '<div class="overlay"><div class="overlay-text">' + title + '</div></div></div></div>' + foodURL + ' <a class="btn btn-info btn-block addRecipe"><i class="fas fa-heart"></i></a></div></div></div>');
+             $('.recipe-results').append('<div class="col-sm-3 group' + groupNumber + '"><div class="recipe-container"><div class="image-container">' + foodPic + '<div class="overlay"><div class="overlay-text">' + title + '</div></div></div></div>' + foodURL + ' <a class="btn btn-danger btn-block addRecipe"  data-grocery-url="' + grocery_url + '" data-title="' + title + '"><i class="fas fa-heart"></i></a></div></div></div>');
            }
 
            changePage();
@@ -64,22 +93,44 @@
 
        // Function to add recipe to database
        $('.addRecipe').click(function(){
+          let $_this = $(this);
+
              let meal_name = $(this).siblings('.recipe-container').find('.overlay-text').text();
-             console.log(meal_name);
+             //console.log(meal_name);
              let meal_url = $(this).siblings('a').attr('href');
-             console.log(meal_url);
+             //console.log(meal_url);
+
+             let meal_pic = $(this).siblings('.recipe-container').find('.image').css('background-image');
+               meal_pic = meal_pic.substring(
+                  meal_pic.lastIndexOf('(') + 1,
+                  meal_pic.lastIndexOf(')')
+              );
+
+              let grocery_url = $_this.data('grocery-url');
+
+             console.log(grocery_url);
+
              let parent = $(this).parent();
+
+
+
+
+
 
              $.post("functions.php",
              {
                  meal_name: meal_name,
-                 meal_url: meal_url
+                 meal_url: meal_url,
+                 meal_pic: meal_pic,
+                 grocery_url: grocery_url
              },
              function(){
                $(parent).append('<p class="confirmation">Added!</p>');
                  //$(this).append(data + "added!");
              });
            });
+
+
 
 
    }});
@@ -144,10 +195,93 @@
  });
 
  // .addMeal buttons for home (weekly calendar)
- $('.addMeal').click(function(){
-   console.log($("#favorites a").text());
+ $('.addMeal').click(function(e){
+   $('.hide-button').click();
+   $(this).siblings('.dropdown-container').find('.favoritesDropdown').show();
+  // $(this).siblings('.hide-button').show();
 
+   e.stopPropagation();
    //$(this).before('tacos');
+ });
+
+ $(".favoritesDropdown").click(function(e){
+    e.stopPropagation();
+  });
+
+  $(document).click(function(){
+      $(".favoritesDropdown").hide();
+  });
+
+ $('.favoritesDropdown>span').click(function(){
+     let $mealName = $(this).text();
+     let $calendarImage = $(this).data('url');
+     let $mealID = $(this).data('id');
+     console.log($mealID);
+     $(this).closest('.dropdown-container').siblings('.meal-name').html($mealName);
+     $(this).closest('.dropdown-container').siblings('.meal-id').html($mealID);
+     $(this).closest('.dropdown-container').siblings('.dayMealPlan').css('background', 'url(' + $calendarImage + ')');
+     $(this).closest('.dropdown-container').siblings('.dayMealPlan').html('');
+     $(".favoritesDropdown").hide();
+ });
+
+ // Post current calendar selections to DB
+ $('.submitCalendar').click(function(){
+
+
+   // Need Date Range (week)
+
+   let fullCalendar = true;
+   // Check for unchanged
+   $('.dayMealPlan').each(function(index, item) {
+     console.log(item);
+      if ($(item).text() === 'Click to add a favorite meal below!') {
+        let $_this = $(this);
+
+        $(this).addClass('missing');
+        $('.errorOverlay').show();
+
+        setTimeout(function () {
+            $_this.removeClass('missing');
+            $('.errorOverlay').fadeOut();
+        }, 1500);
+        fullCalendar = false;
+      }
+
+    });
+
+    if (fullCalendar===false){return;}
+
+     let weekNumber = $('.displaying').data('week-number');
+     let monday = $('#monday .meal-id').text();
+     let tuesday = $('#tuesday .meal-id').text();
+     let wednesday = $('#wednesday .meal-id').text();
+     let thursday = $('#thursday .meal-id').text();
+     let friday = $('#friday .meal-id').text();
+     let weekdays = {Monday: monday, Tuesday: tuesday, Wednesday: wednesday, Thursday: thursday, Friday: friday};
+
+     // Gather meal IDs
+     // each loop through .meal-id
+
+
+   $.post("forms.php",
+   {
+     week: weekNumber,
+     mon: monday,
+     tue: tuesday,
+     wed: wednesday,
+     thu: thursday,
+     fri: friday
+   },
+   function(data, status){
+     console.log(data);
+     $('.submitOverlay').show();
+
+     setTimeout(function () {
+         $('.submitOverlay').fadeOut();
+     }, 1500);
+     return false;
+   });
+
  });
 
  // Function to add recipe to database
@@ -206,3 +340,245 @@
       }
     }
   });
+
+  // Add meals to calendar
+
+  $(".pop").popover({ trigger: "manual" , html: true, animation:false})
+      .on("mouseenter", function () {
+          var _this = this;
+          $(this).popover("show");
+          $(".popover").on("mouseleave", function () {
+              $(_this).popover('hide');
+          }),
+          $('.dayz').click(function() {
+            console.log($(this).text() + ' ' + $(this).data('meal'));
+          });
+      }).on("mouseleave", function () {
+          var _this = this;
+          setTimeout(function () {
+              if (!$(".popover:hover").length) {
+                  $(_this).popover("hide");
+              }
+          }, 300);
+  });
+
+
+
+  /* Build function to scrape ingredients */
+  function getIngredients() {
+
+    // Search Recipe
+    // get f2f_url
+    // Append meal name between `view/` + `/numbers`
+        // REGEX for finding trailing numbers: (\/[0-9]+)
+    let regex = /\/[0-9]+/g;
+    let tail = url.match(regex);
+    //console.log(url, 'tail: ' + tail);
+
+    // End at URL view/
+    let stop = 'view/';
+    let end = url.indexOf(stop);
+    console.log(end);
+    let full = end + stop.length;
+    console.log(full);
+    let res = url.substring(0, full);
+
+
+    // Replace title spaces w/ _ to build URL
+    title = title.replace(/ /g, "_");
+    let getUrl = res + title + tail;
+
+
+    $( "#grocery-list" ).load( getUrl + " [itemprop=ingredients]" );
+  }
+
+
+// Function to loop through calendar week date ranges
+  $('.weeklyCalendar .btn').click(function(){
+    let weekRanges = [];
+
+    // Loop through all of .range
+    $('.range').each(function(index, item) {
+      weekRanges.push($(this).data('week-number'));
+
+    });
+    //console.log(weekRanges);
+
+    let weekNumber = $('.displaying').data('week-number');
+    console.log('week#: ' + weekNumber);
+    let current = weekRanges.indexOf(weekNumber);
+
+
+    if ($(this).hasClass('prev')) {
+
+      if (current >= 1) {
+        if (current === 1) {
+          $('.prev').addClass('disabled');
+          $('.next').removeClass('disabled');
+        } else {
+          $('.next').removeClass('disabled');
+          $('.prev').removeClass('disabled');
+        }
+      } else return;
+
+      $('.range:eq(' + current + ')').removeClass('displaying');
+      current -= 1;
+
+      let newCurrent = weekRanges[current];
+      console.log('new current: ' + newCurrent);
+      $('.range:eq(' + current + ')').addClass('displaying');
+      $('.meal-row').removeClass('displaying');
+      $('.meal-row-'+newCurrent).addClass('displaying');
+
+
+    } else if ($(this).hasClass('next')) {
+
+      if (current <= 1) {
+        if (current === 1) {
+          $('.next').addClass('disabled');
+          $('.prev').removeClass('disabled');
+        } else {
+          $('.prev').removeClass('disabled');
+          $('.next').removeClass('disabled');
+
+        }
+      } else return;
+
+
+      $('.range:eq(' + current + ')').removeClass('displaying');
+        current += 1;
+        let newCurrent = weekRanges[current];
+        console.log(newCurrent);
+        $('.range:eq(' + current + ')').addClass('displaying');
+
+        $('.meal-row').removeClass('displaying');
+        $('.meal-row-'+newCurrent).addClass('displaying');
+
+        //  weekRanges.indexOf(current).show();
+
+        }
+  });
+
+  // Hide non-selected .week-row
+  function properWeeks() {
+    $('.meal-row:eq(1)').addClass('displaying');
+  };
+  properWeeks();
+
+
+
+
+/*
+
+
+  // Begin recipe getting
+  // Build function to scrape ingredients
+  let grocery_list = getGroceries();
+  console.log(grocery_list);
+  function getGroceries() {
+
+    console.log($_this);
+
+    let url = $_this.data('url');
+    let title = $_this.data('title');
+
+    console.log(url, ' + ', title);
+
+
+  //   IS it better to do this server side?
+
+    // Search Recipe
+    // get f2f_url
+    // Append meal name between `view/` + `/numbers`
+        // REGEX for finding trailing numbers: (\/[0-9]+)
+    let regex = /\/[0-9]+/g;
+    let tail = url.match(regex);
+    //console.log(url, 'tail: ' + tail);
+
+    // End at URL view/
+    let stop = 'view/';
+    let end = url.indexOf(stop);
+
+    let full = end + stop.length;
+
+    let res = url.substring(0, full);
+
+
+    // Replace title spaces w/ _ to build URL
+    title = title.replace(/ /g, "_");
+    title.replace('-', '');
+    title.replace('&', '');
+    let getUrl = res + title + tail;
+*/
+    // Gets ingredients using built url
+
+  /*  $.get(getUrl, function(data, status){
+        var x = $.parseHTML(data);
+
+        var y = $(x).find('.about-container ul').html();
+        console.log('grocery-list: ' + y);
+        return y;
+      }); */
+      /*
+      ajaxCall1();
+      function ajaxCall1(){
+        var promises = [];
+        $.ajax({
+          type: "get",
+          url: getUrl,
+          success: function(data) {
+              var x = $.parseHTML(data);
+
+              var y = $(x).find('.about-container ul').html();
+              console.log('grocery-list: ' + y);
+              //ajaxCall2(y);
+              promises.push(y);
+            },
+            error: function() {
+                alert('Error occured');
+            }
+        });
+        console.log('promises: ' + promises);
+        return promises;
+      }
+*/
+/*     function ajaxCall2(list) {
+       console.log('final list: ' + list);
+
+        $.post('groceries.php'
+          {
+            grocery_list: list
+          },
+            function(){
+              $(parent).append('<p class="confirmation">Added!</p>');
+                //$(this).append(data + "added!");
+            });
+        };
+
+      }
+
+*/
+//  };
+
+
+
+
+// End recipe getting
+
+
+
+
+/* Possible Get function to get grocery list
+
+    $(document).ready(function(){
+      $("button").click(function(){
+          $.get("https://food2fork.com/view/Dark_and_Stormy/36227", function(data, status){
+              $('#result').html(data);
+              $('#result').hide();
+
+              $('#list').html($('body').find('[itemprop=ingredients]'));
+
+          });
+      });
+  });
+*/

@@ -3,6 +3,7 @@ body {
   /*background: #eaeaea;*/
 
   background: url(https://www.outdoorproject.com/sites/default/files/features/dpl_9706_1.jpg);
+  background: linear-gradient(to bottom right, white, gray);
   /* Full height */
   height: 100%;
 
@@ -10,11 +11,37 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden;
+  /*overflow: hidden;*/
   font-family: 'Montserrat', sans-serif;
 
 }
 
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+/* error overlay full screen */
+.errorOverlay, .submitOverlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #1b1a1ab8;
+    z-index: 10;
+    display: none;
+}
+
+.innerText, .innerText2 {
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    margin-top: 160px;
+}
 
 /* dashboard design */
 #dashboard {
@@ -23,6 +50,7 @@ body {
     border-radius: 5px;
     color: white;
     padding: 15px;
+    position: relative;
 }
 
 /* Tabs */
@@ -41,13 +69,47 @@ body {
     color: #f9c943;
 }
 
+.meal-row {
+  display: none;
+  width: 100%;
+}
+
 .day {
-    display: inline-block;
+    display: inline-table;
     width: calc(20% - 4px);
+    margin: 2px;
+}
+
+.range {
+    display: inline-block;
+    height: 32px;
+    background: white;
+    color: #828282;
+    padding: 5px;
+}
+
+.displaying {
+  display: inline-block!important;
+}
+
+.prev, .next {
+    background: #d2d2d2;
+    background: linear-gradient(#fdfdfd, #545454);
+    border: none;
+}
+
+.prev {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.next {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .addMeal {
-  display: block;
+  display: inline-block;
 }
 
 .recipe-container {
@@ -125,10 +187,87 @@ body {
 .recipe-container img {
     user-select: none;
 }
+.favoritesDropdown {
+    height: 280px;
+    overflow: scroll;
+    background: white;
+    border-radius: 0 0 5px 5px;
+    display: none;
+    color:black;
+    overflow-x: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.meal-id {display: none;}
+
+.hide-button {
+    display: none;
+    float: right;
+    color: lightgray;
+    vertical-align: middle;
+    position: absolute;
+    padding-top: 8px;
+    padding-left: 8px;
+    cursor: pointer;
+}
+
+.hide-button:hover {
+  color: white;
+}
+
+.favoritesDropdown > span {
+    display: block;
+    cursor: copy;
+}
+
+.favoritesDropdown > span:hover {
+    background: teal;
+    color: white;
+}
+
+.dayMealPlan {
+    background: whitesmoke;
+    color: grey;
+    height: 186px;
+
+    overflow: hidden;
+    background-size: cover!important;
+}
+
+.submitCalendar {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.missing {
+    box-shadow: 0 0 15px 5px #e01a1a;
+    position: relative;
+    transition: all 0.5s;
+    z-index: 10;
+    opacity: 0.9;
+  }
 
 #favorites .panel {
     max-height: 200px;
     overflow: auto;
+}
+
+.favoriteRecipe {
+  position: relative;
+  width: fit-content;
+  width: -moz-fit-content;
+}
+
+.daysOfWeek {
+    position: absolute;
+    right: 0;
+    top: -15px;
+}
+
+.daysOfWeek a {
+  color: white;
 }
 
 /* Forward & Back Button Styling */

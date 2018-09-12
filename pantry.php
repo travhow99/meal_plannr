@@ -1,11 +1,5 @@
 <?php
-  $host = "localhost";
-  $userName = "root";
-  $password = "root";
-  $dbName = "meal_plannr";
-
-  // Create database connection
-  $conn = mysqli_connect($host, $userName, $password, $dbName);
+include('config.php');
 
   if (mysqli_connect_errno()){
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -53,7 +47,7 @@
 
 
     if (!empty($itemName) && !empty($timeLine)) {
-      echo "adding " . $itemName . " and " . $timeLine;
+      echo "adding $itemName and $timeLine";
 
       mysqli_query($conn, "INSERT INTO pantry(itemName, timeLine) VALUES ('$itemName', '$timeLine')");
       echo "Affected rows: " . mysqli_affected_rows($conn);
