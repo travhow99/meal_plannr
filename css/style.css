@@ -1,4 +1,8 @@
 html {height: 100%;}
+
+h1, h2, h3, h4, h5 {
+
+}
 body {
   /*background: #eaeaea;*/
 
@@ -11,6 +15,8 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  background-attachment: fixed;
   /*overflow: hidden;*/
   font-family: 'Montserrat', sans-serif;
 
@@ -92,6 +98,10 @@ body {
   display: inline-block!important;
 }
 
+.weeklyCalendar .displaying {
+    width: 120px;
+}
+
 .prev, .next {
     background: #d2d2d2;
     background: linear-gradient(#fdfdfd, #545454);
@@ -99,17 +109,20 @@ body {
 }
 
 .prev {
+  margin-right: -3px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
 
 .next {
+    margin-left: -5px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
 
 .addMeal {
   display: inline-block;
+  margin-top: -57px;
 }
 
 .recipe-container {
@@ -187,6 +200,11 @@ body {
 .recipe-container img {
     user-select: none;
 }
+
+.dropdown-container {
+    margin-top: -20px;
+}
+
 .favoritesDropdown {
     height: 280px;
     overflow: scroll;

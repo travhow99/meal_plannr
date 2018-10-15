@@ -89,7 +89,7 @@ function favoritesDropdown() {
   $sql = mysqli_query($conn,"SELECT * FROM meals WHERE user='$user'");
 
 
-  echo "<div class='dropdown-container'><div class='favoritesDropdown'><span>Eating Out</span>";
+  echo "<div class='dropdown-container'><div class='favoritesDropdown'>";
     while ($row = mysqli_fetch_array($sql)){
       echo "<span data-id=".$row['ID']." data-url=" . $row['meal_pic'] . ">" . $row['meal_name'] . "</span>";
     };

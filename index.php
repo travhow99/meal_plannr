@@ -52,19 +52,20 @@
     <div id="dashboard">
       <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-        <li><a data-toggle="tab" href="#favorites">Cook Book</a></li>
+        <!-- <li><a data-toggle="tab" href="#favorites">Cook Book</a></li> !-->
         <li><a data-toggle="tab" href="#mealSearch">Meal Search</a></li>
-        <li><a data-toggle="tab" href="#pantry">Pantry</a></li>
-
+  <!--      <li><a data-toggle="tab" href="#pantry">Pantry</a></li>
+!-->
         <span id="welcome"><i class="fas fa-coffee"></i> <?php echo $login_session; ?></span>
         <span id="logOut"><a href="logout.php">Log Out</a></span>
       </ul>
 
       <div class="tab-content">
         <div id="home" class="tab-pane fade in active">
-          <h3>HOME</h3>
+
           <p class="lead">What's on the menu this week?</p>
           <div class="calendar">
+            <h3>Week of...</h3>
             <!-- php calendar !-->
             <?php
                 include 'functions.php';
@@ -101,12 +102,12 @@
           </div>
 
         </div>
+        <!-- Hide Pantry
         <div id="pantry" class="tab-pane fade">
           <div id="pantry" class="container">
             <h2>Pantry</h2>
 
             <input id="neededInput" name="itemName" type="text" placeholder="Add to your list!"></input>
-            <!-- <input id="timeLine" name="timeLine" type="text" placeholder="When do you need it?"></input> !-->
             <select id="timeLine" name="timeLine">
               <option value="" disabled hidden selected>What's your supply like?</option>
               <option value="stocked">Just Stocked It</option>
@@ -121,31 +122,32 @@
               <div id="stocked" class="col-xs-4">
                 <h3>Stocked Up!</h3>
                 <?php
-
+/*
                   require 'pantry.php';
                   showPantry($stocked);
-
+*/
                 ?>
               </div>
               <div id="runningLow" class="col-xs-4">
                 <h3>Running Low...</h3>
                 <?php
-
+/*
                   showPantry($low);
-
+*/
                 ?>
               </div>
-              <div id="pantry" class="col-xs-4">
+              <div id="" class="col-xs-4">
                 <h3 class="text-danger">Desperately Needed!</h3>
                 <?php
-
+/*
                   showPantry($desperate);
-
+*/
                 ?>
               </div>
             </div>
 
           </div>
+          !-->
 
         </div>
       </div>

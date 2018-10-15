@@ -196,7 +196,7 @@
 
  // .addMeal buttons for home (weekly calendar)
  $('.addMeal').click(function(e){
-   $('.hide-button').click();
+   $('.favoritesDropdown').hide();
    $(this).siblings('.dropdown-container').find('.favoritesDropdown').show();
   // $(this).siblings('.hide-button').show();
 
@@ -222,6 +222,7 @@
      $(this).closest('.dropdown-container').siblings('.dayMealPlan').css('background', 'url(' + $calendarImage + ')');
      $(this).closest('.dropdown-container').siblings('.dayMealPlan').html('');
      $(".favoritesDropdown").hide();
+     $(this).closest('.dropdown-container').siblings('.addMeal').hide();
  });
 
  // Post current calendar selections to DB
@@ -232,7 +233,7 @@
 
    let fullCalendar = true;
    // Check for unchanged
-   $('.dayMealPlan').each(function(index, item) {
+   $('.meal-row.displaying .dayMealPlan').each(function(index, item) {
      console.log(item);
       if ($(item).text() === 'Click to add a favorite meal below!') {
         let $_this = $(this);
@@ -251,12 +252,12 @@
 
     if (fullCalendar===false){return;}
 
-     let weekNumber = $('.displaying').data('week-number');
-     let monday = $('#monday .meal-id').text();
-     let tuesday = $('#tuesday .meal-id').text();
-     let wednesday = $('#wednesday .meal-id').text();
-     let thursday = $('#thursday .meal-id').text();
-     let friday = $('#friday .meal-id').text();
+     let weekNumber = $('.range.displaying').data('week-number');
+     let monday = $('.meal-row.displaying .monday .meal-id').text();
+     let tuesday = $('.meal-row.displaying .tuesday .meal-id').text();
+     let wednesday = $('.meal-row.displaying .wednesday .meal-id').text();
+     let thursday = $('.meal-row.displaying .thursday .meal-id').text();
+     let friday = $('.meal-row.displaying .friday .meal-id').text();
      let weekdays = {Monday: monday, Tuesday: tuesday, Wednesday: wednesday, Thursday: thursday, Friday: friday};
 
      // Gather meal IDs
@@ -273,7 +274,7 @@
      fri: friday
    },
    function(data, status){
-     console.log(data);
+     console.log('data: ' + data);
      $('.submitOverlay').show();
 
      setTimeout(function () {
@@ -281,6 +282,7 @@
      }, 1500);
      return false;
    });
+   $('.displaying .addMeal').hide();
 
  });
 

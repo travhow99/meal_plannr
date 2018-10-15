@@ -24,7 +24,7 @@ foreach ($weekdays as $weekday) {
     }
 
   $lowered = strtolower($weekday);
-  echo "<div id='$lowered' class='noselect day'>
+  echo "<div class='$lowered noselect day'>
           <span>$weekday</span></br>";
 
   //$sql = 'SELECT * FROM calendar';
