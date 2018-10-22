@@ -13,6 +13,13 @@ body {
 
 }
 
+@media (max-width: 480px) {
+  body {
+    background: url(https://lh3.googleusercontent.com/8ZV6H_USUqf1MhcCxSe36HaC_Ccp56WTCNodKibc-QgmmaOYvAVV2zCuS5YRd36lSHo20T2ImhQ_ojQOqpM0zQmKJ75daK9_HWbt0IZKAqAlLHdkqRQ19lL_O_BaRQ5wr8GnW7ymdQ=w2400);
+    background-size: cover;
+  }
+}
+
 .logOut {
   text-align: center;
   margin-top: 0;
